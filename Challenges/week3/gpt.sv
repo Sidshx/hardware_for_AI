@@ -1,4 +1,4 @@
-```systemverilog
+
 // In-Place Q-Table Updater (Simplified)
 // BOARD_ROWS=5, BOARD_COLS=5, ACTIONS=4
 
@@ -83,4 +83,3 @@ module q_learning_hw #(
   end
 
 endmodule
-```
