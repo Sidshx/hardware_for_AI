@@ -1,8 +1,8 @@
 ## Asked ChatGPT to identity “computational bottlenecks” in the FrozenLake code from
-https://github.com/ronanmmurphy/Q-Learning-Algorithm
+```https://github.com/ronanmmurphy/Q-Learning-Algorithm```
 
 And the output it gave me was:
-```
+
 ## Performance Bottlenecks & Fixes
 
 | Issue                       | Suggested Fix                      |
@@ -12,12 +12,14 @@ And the output it gave me was:
 | Repeated object creation    | Reuse `State` object               |
 | Excessive printing          | Limit output or use logging        |
 | Manual Q-table structure    | Use NumPy arrays                   |
-```
+
 
 ## Q. Do the suggestions make sense? How well is it able to identity bottlenecks?
 
 Some suggestions make sense, but I don’t think all will speed things up much. It did pinpoint where to optimize and offered good solutions, though.
+## Q. Propose a HW implementation of the biggest bottleneck.
 ```
+
 +---------------------------------------------------+
 |                 Q-Table Memory Bank               |
 |   (Dual-port SRAM: [BOARD_ROWS][BOARD_COLS][4])   |
@@ -43,5 +45,5 @@ Some suggestions make sense, but I don’t think all will speed things up much. 
   `Q_new = (1–α)*Q_curr + α*(R + γ*Q_max)`
 - **Direct Write**: Write Q_new back to SRAM cell → no full-table copy
 
-## Also it generated System Verilog code for the HW implementation
+## Q. Generate System Verilog code for the HW implementation
 gpt.sv
