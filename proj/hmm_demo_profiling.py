@@ -68,7 +68,7 @@ def main():
     np.random.seed(42)
     print("   N     | Log P[O|Θ]    | Viterbi (s)")
     print("---------+---------------+--------------")
-    for N in [10_000, 50_000, 100_000, 200_000, 500_000]:
+    for N in [10_000, 50_000, 100_000, 200_000, 500_000, 1000_000]:
         O, _ = generate_sequence_hmm(N, A, C, B)
 
         t0 = time.perf_counter()
