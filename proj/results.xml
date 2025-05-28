@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1747866559" />
+    <testcase name="test_random_pe_chain" classname="tests.test_viterbi_systolic" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/tests/test_viterbi_systolic.py" lineno="14" time="0.0007302761077880859" sim_time_ns="0.001" ratio_time="1.3693450865164871">
+      <failure message="Test failed with RANDOM_SEED=1747866559" />
+    </testcase>
+  </testsuite>
+</testsuites>
