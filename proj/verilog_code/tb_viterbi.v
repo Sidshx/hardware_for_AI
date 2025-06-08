@@ -1,152 +1,102 @@
 //==============================================================================
-// TESTBENCH
+// SIMPLE TESTBENCH
 //==============================================================================
 
 module tb_viterbi;
+  
+  parameter N = 8, I = 3, K = 3, W = 16;
+  
+  reg clk, rst_n, start, obs_valid;
+  reg [2:0] length;
+  reg [1:0] obs_in;
+  reg signed [W-1:0] logA [0:8];
+  reg signed [W-1:0] logC [0:2]; 
+  reg signed [W-1:0] logB [0:8];
+  wire [1:0] path [0:7];
+  wire done;
 
-  parameter N = 8;   // sequence length  
-  parameter I = 3;   // states
-  parameter K = 3;   // symbols
-  parameter W = 20;  // width
+  // Test observation sequence
+  reg [1:0] obs_seq [0:4];
+  integer obs_idx;
 
-  // Testbench signals
-  reg                      clk;
-  reg                      rst_n;
-  reg                      start;
-  reg  [$clog2(N)-1:0]     length;
-  reg  [$clog2(K)-1:0]     obs_in;
-  reg                      obs_valid;
-  reg  signed [W-1:0]      logA [0:I*I-1];
-  reg  signed [W-1:0]      logC [0:I-1];
-  reg  signed [W-1:0]      logB [0:I*K-1];
-  wire [$clog2(I)-1:0]     path [0:N-1];
-  wire                     done;
-  wire                     valid_out;
+  // Clock
+  always #5 clk = ~clk;
 
-  // Test sequence
-  reg [$clog2(K)-1:0] test_obs [0:N-1];
-  reg [$clog2(N)-1:0] obs_count;
-
-  // Clock generation
-  initial begin
-    clk = 0;
-    forever #5 clk = ~clk;
-  end
-
-  // DUT instantiation
-  viterbi_top #(
-    .N(N), .I(I), .K(K), .W(W)
-  ) dut (
-    .clk(clk),
-    .rst_n(rst_n),
-    .start(start),
-    .length(length),
-    .obs_in(obs_in),
-    .obs_valid(obs_valid),
-    .logA(logA),
-    .logC(logC),
-    .logB(logB),
-    .path(path),
-    .done(done),
-    .valid_out(valid_out)
+  // DUT
+  viterbi_top dut (
+    .clk(clk), .rst_n(rst_n), .start(start), .length(length),
+    .obs_in(obs_in), .obs_valid(obs_valid),
+    .logA(logA), .logC(logC), .logB(logB),
+    .path(path), .done(done)
   );
 
-  integer i, j, k;
+  integer i;
 
-  // Test stimulus
   initial begin
     // Initialize
-    rst_n = 0;
-    start = 0;
-    obs_in = 0;
-    obs_valid = 0;
-    length = 5;
-    obs_count = 0;
+    clk = 0; rst_n = 0; start = 0; obs_valid = 0;
+    obs_in = 0; length = 5; obs_idx = 0;
 
-    // Initialize HMM parameters (simplified values)
-    // logA: transition probabilities (log domain)
-    for (i = 0; i < I*I; i = i + 1) begin
-      logA[i] = -20'sd100; // Small transition prob
-    end
-    // Diagonal elements higher (stay in same state more likely)
-    logA[0*I + 0] = -20'sd10;  // logA[0][0]
-    logA[1*I + 1] = -20'sd10;  // logA[1][1] 
-    logA[2*I + 2] = -20'sd10;  // logA[2][2]
-    logA[0*I + 1] = -20'sd50;  // logA[0][1]
-    logA[1*I + 2] = -20'sd50;  // logA[1][2]
-    logA[2*I + 0] = -20'sd50;  // logA[2][0]
+    // Simple HMM parameters (small negative numbers in log domain)
+    // Transition matrix logA (prefer staying in same state)
+    logA[0] = -16'd10;  logA[1] = -16'd50;  logA[2] = -16'd50;  // from state 0
+    logA[3] = -16'd50;  logA[4] = -16'd10;  logA[5] = -16'd50;  // from state 1  
+    logA[6] = -16'd50;  logA[7] = -16'd50;  logA[8] = -16'd10;  // from state 2
 
-    // logC: initial state probabilities
-    logC[0] = -20'sd10;
-    logC[1] = -20'sd50;
-    logC[2] = -20'sd50;
+    // Initial state probs (favor state 0)
+    logC[0] = -16'd5;   logC[1] = -16'd50;  logC[2] = -16'd50;
 
-    // logB: emission probabilities
-    for (i = 0; i < I*K; i = i + 1) begin
-      logB[i] = -20'sd100;
-    end
-    // State 0 prefers obs 0, state 1 prefers obs 1, state 2 prefers obs 2
-    logB[0*K + 0] = -20'sd5;   // logB[0][0]
-    logB[1*K + 1] = -20'sd5;   // logB[1][1]
-    logB[2*K + 2] = -20'sd5;   // logB[2][2]
+    // Emission matrix logB (each state prefers different observation)
+    logB[0] = -16'd5;   logB[1] = -16'd50;  logB[2] = -16'd50;  // state 0 prefers obs 0
+    logB[3] = -16'd50;  logB[4] = -16'd5;   logB[5] = -16'd50;  // state 1 prefers obs 1
+    logB[6] = -16'd50;  logB[7] = -16'd50;  logB[8] = -16'd5;   // state 2 prefers obs 2
 
-    // Test observation sequence
-    test_obs[0] = 0;
-    test_obs[1] = 0;
-    test_obs[2] = 1;
-    test_obs[3] = 1;
-    test_obs[4] = 2;
+    // Test sequence
+    obs_seq[0] = 0; obs_seq[1] = 0; obs_seq[2] = 1; obs_seq[3] = 1; obs_seq[4] = 2;
 
     // Reset
-    #20 rst_n = 1;
-    #20;
+    #10 rst_n = 1;
+    #10;
 
-    $display("Starting Viterbi test...");
-    $display("Test sequence: %d %d %d %d %d", 
-             test_obs[0], test_obs[1], test_obs[2], test_obs[3], test_obs[4]);
+    $display("=== Viterbi Test ===");
+    $display("Observation sequence: %d %d %d %d %d", 
+             obs_seq[0], obs_seq[1], obs_seq[2], obs_seq[3], obs_seq[4]);
 
-    // Start processing with first observation
+    // Start with first observation
+    obs_in = obs_seq[0];
     start = 1;
-    obs_in = test_obs[0];
-    obs_valid = 1;
-    @(posedge clk);
-    start = 0;
-    @(posedge clk);
-    obs_valid = 0;
+    #10 start = 0;
 
-    // Feed observations
-    for (k = 1; k < length; k = k + 1) begin
+    // Feed remaining observations
+    for (obs_idx = 1; obs_idx < 5; obs_idx = obs_idx + 1) begin
       @(posedge clk);
-      obs_in = test_obs[k];
+      obs_in = obs_seq[obs_idx];
       obs_valid = 1;
-      @(posedge clk); // Wait for processing
-      obs_valid = 0;  // Deassert for one cycle
+      @(posedge clk);
+      obs_valid = 0;
     end
-
-    // Keep obs_valid low and wait for completion
 
     // Wait for completion
     wait(done);
-    @(posedge clk);
+    #20;
 
-    $display("Viterbi decoding complete!");
-    $display("Decoded path: %d %d %d %d %d", 
+    $display("Decoded state sequence: %d %d %d %d %d", 
              path[0], path[1], path[2], path[3], path[4]);
-
-    #50;
-    $finish;
+    $display("=== Test Complete ===");
+    
+    #50 $finish;
   end
 
-  // Monitor with more detailed state info
-  initial begin
-    $monitor("t=%0t state=%d t=%d obs_in=%d obs_valid=%d done=%d back_idx=%d", 
-             $time, dut.state, dut.t, obs_in, obs_valid, done, dut.back_idx);
+  // Simple monitor
+  always @(posedge clk) begin
+    if (dut.state != 0) 
+      $display("Time=%0t State=%d t=%d obs=%d done=%d", 
+               $time, dut.state, dut.t, obs_in, done);
   end
 
-  // Waveform dump
-  initial begin
-    $dumpfile("viterbi_tb.vcd");
-    $dumpvars(0, tb_viterbi);
-  end
+//  initial begin
+//    $dumpfile("viterbi.vcd");
+//    $dumpvars(0, tb_viterbi);
+//  end
 
 endmodule
