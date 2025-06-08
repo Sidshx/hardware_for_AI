@@ -2,7 +2,7 @@
 // TESTBENCH
 //==============================================================================
 
-module tb_viterbi;
+module tb_viterbi_top;
 
   parameter N = 8;   // sequence length  
   parameter I = 3;   // states
