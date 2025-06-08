@@ -138,16 +138,17 @@ module viterbi_top #(
         end
 
         CALC: begin
-          if (obs_valid && t < length) begin
+          if (t >= length) begin
+            state <= BACK;
+          end else if (obs_valid) begin
             // latch ψ pointers and compute next-deltas
             for (i = 0; i < I; i = i + 1) begin
               psi_mem[t][i] <= psi_out_w[i];
               delta_next[i] <= delta_out_w[i];
             end
             state <= UPDATE;
-          end else if (t >= length) begin
-            state <= BACK;
           end
+          // Stay in CALC if t < length but obs_valid is not asserted
         end
 
         UPDATE: begin

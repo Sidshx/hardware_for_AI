@@ -105,21 +105,25 @@ module tb_viterbi;
     $display("Test sequence: %d %d %d %d %d", 
              test_obs[0], test_obs[1], test_obs[2], test_obs[3], test_obs[4]);
 
-    // Start processing  
+    // Start processing with first observation
     start = 1;
     obs_in = test_obs[0];
     obs_valid = 1;
-    #10 start = 0;
+    @(posedge clk);
+    start = 0;
+    @(posedge clk);
+    obs_valid = 0;
 
     // Feed observations
     for (k = 1; k < length; k = k + 1) begin
       @(posedge clk);
       obs_in = test_obs[k];
       obs_valid = 1;
-      #1; // Small delay
+      @(posedge clk); // Wait for processing
+      obs_valid = 0;  // Deassert for one cycle
     end
 
-    obs_valid = 0;
+    // Keep obs_valid low and wait for completion
 
     // Wait for completion
     wait(done);
@@ -133,10 +137,10 @@ module tb_viterbi;
     $finish;
   end
 
-  // Monitor
+  // Monitor with more detailed state info
   initial begin
-    $monitor("t=%0t state=%d t=%d obs_in=%d obs_valid=%d done=%d", 
-             $time, dut.state, dut.t, obs_in, obs_valid, done);
+    $monitor("t=%0t state=%d t=%d obs_in=%d obs_valid=%d done=%d back_idx=%d", 
+             $time, dut.state, dut.t, obs_in, obs_valid, done, dut.back_idx);
   end
 
   // Waveform dump
