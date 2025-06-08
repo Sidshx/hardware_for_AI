@@ -1,5 +1,5 @@
-// viterbi_top.sv
-// simplified, synthesizable, two‐stage forward + backtrack
+// viterbi_top.v
+// Corrected, synthesizable, two-stage forward + backtrack
 `timescale 1ns/1ps
 
 module viterbi_top #(
@@ -8,56 +8,67 @@ module viterbi_top #(
     parameter K = 3,   // number of symbols
     parameter W = 20   // data width
 )(
-    input                   clk,
-    input                   rst_n,
-    input                   start,        // pulse to begin
-    input  [$clog2(N)-1:0]  length,       // actual sequence length
-    input  [$clog2(K)-1:0]  obs_in,       // current observation
-    input                   obs_valid,    // obs_in is valid
+    input                      clk,
+    input                      rst_n,
+    input                      start,        // pulse to begin
+    input  [$clog2(N)-1:0]     length,       // actual sequence length
+    input  [$clog2(K)-1:0]     obs_in,       // current observation
+    input                      obs_valid,    // obs_in is valid
 
-    // HMM params (log‐domain)
-    input  signed [W-1:0]   logA [0:I-1][0:I-1],
-    input  signed [W-1:0]   logC [0:I-1],
-    input  signed [W-1:0]   logB [0:I-1][0:K-1],
+    // HMM params (log-domain) - flattened for synthesis
+    input  signed [W-1:0]      logA [0:I*I-1],  // logA[i*I+j] = logA[i][j]
+    input  signed [W-1:0]      logC [0:I-1],
+    input  signed [W-1:0]      logB [0:I*K-1],  // logB[i*K+k] = logB[i][k]
 
     output reg [$clog2(I)-1:0] path [0:N-1], // output sequence
-    output reg               done
+    output reg                 done,
+    output reg                 valid_out
 );
 
-  // explicit two‐stage FSM states
+  // FSM states
   localparam IDLE    = 3'd0,
              INIT0   = 3'd1,
              CALC    = 3'd2,
              UPDATE  = 3'd3,
              BACK    = 3'd4,
-             FINISH  = 3'd5;
+             BACK_LOOP = 3'd5,
+             FINISH  = 3'd6;
 
-  reg [2:0]                   state;
+  reg [2:0]                   state, next_state;
   reg [$clog2(N)-1:0]         t;
-  reg signed [W-1:0]          delta_prev [0:I-1],
-                              delta_next [0:I-1];
+  reg [$clog2(N)-1:0]         back_idx;
+  reg signed [W-1:0]          delta_prev [0:I-1];
+  reg signed [W-1:0]          delta_next [0:I-1];
   reg [$clog2(I)-1:0]         psi_mem    [0:N-1][0:I-1];
 
   // wires from PEs
-  wire signed [W-1:0] delta_out_w [0:I-1];
-  wire [$clog2(I)-1:0] psi_out_w   [0:I-1];
+  wire signed [W-1:0]         delta_out_w [0:I-1];
+  wire [$clog2(I)-1:0]        psi_out_w   [0:I-1];
 
-  // instantiate I PEs
-  genvar j, x;
+  // Create column arrays for each PE
+  reg signed [W-1:0]          logA_col [0:I-1][0:I-1];
+  
+  // Extract columns from flattened logA
+  integer x, y;
+  always @(*) begin
+    for (x = 0; x < I; x = x + 1) begin
+      for (y = 0; y < I; y = y + 1) begin
+        logA_col[y][x] = logA[x*I + y];  // logA_col[y][x] = logA[x][y]
+      end
+    end
+  end
+
+  // Instantiate I PEs
+  genvar j;
   generate
     for (j = 0; j < I; j = j + 1) begin : PES
-      // pull out column j of logA
-      wire signed [W-1:0] col [0:I-1];
-      for (x = 0; x < I; x = x + 1)
-        assign col[x] = logA[x][j];
-
       viterbi_pe #(.I(I), .W(W)) pe (
         .clk        (clk),
         .rst_n      (rst_n),
         .obs        (obs_in),
         .delta_prev (delta_prev),
-        .logA_col   (col),
-        .logB_emit  (logB[j][obs_in]),
+        .logA_col   (logA_col[j]),
+        .logB_emit  (logB[j*K + obs_in]),
         .delta_out  (delta_out_w[j]),
         .psi_out    (psi_out_w[j])
       );
@@ -65,77 +76,112 @@ module viterbi_top #(
   endgenerate
 
   integer i;
-  reg signed [W-1:0] best_v;
-  reg [$clog2(I)-1:0] best_i;
+  reg signed [W-1:0]          best_v;
+  reg [$clog2(I)-1:0]         best_i;
+  reg [$clog2(I)-1:0]         current_state;
 
-  // ------------------------------------------------------------------------
-  // FSM: INIT0 → CALC → UPDATE → … → BACK → FINISH
-  // ------------------------------------------------------------------------
+  // FSM
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
       state <= IDLE;
       done  <= 1'b0;
-      t      <= 0;
-      for (i = 0; i < I; i = i + 1)
+      valid_out <= 1'b0;
+      t <= 0;
+      back_idx <= 0;
+      current_state <= 0;
+      for (i = 0; i < I; i = i + 1) begin
         delta_prev[i] <= 0;
+        delta_next[i] <= 0;
+      end
+      for (i = 0; i < N; i = i + 1) begin
+        path[i] <= 0;
+      end
     end else begin
       case (state)
         IDLE: begin
           done <= 1'b0;
-          if (start) state <= INIT0;
+          valid_out <= 1'b0;
+          if (start) begin
+            state <= INIT0;
+            t <= 0;
+          end
         end
 
         INIT0: begin
           // δ[0,i] = logC[i] + logB[i][obs0]
-          for (i = 0; i < I; i = i + 1)
-            delta_prev[i] <= logC[i] + logB[i][obs_in];
-          t     <= 1;
+          for (i = 0; i < I; i = i + 1) begin
+            delta_prev[i] <= logC[i] + logB[i*K + obs_in];
+          end
+          t <= 1;
           state <= CALC;
         end
 
-        CALC: if (obs_valid && t < length) begin
-          // latch ψ pointers and compute next‐deltas
-          for (i = 0; i < I; i = i + 1) begin
-            psi_mem[t][i]  <= psi_out_w[i];
-            delta_next[i]  <= delta_out_w[i];
+        CALC: begin
+          if (obs_valid && t < length) begin
+            // latch ψ pointers and compute next-deltas
+            for (i = 0; i < I; i = i + 1) begin
+              psi_mem[t][i] <= psi_out_w[i];
+              delta_next[i] <= delta_out_w[i];
+            end
+            state <= UPDATE;
+          end else if (t >= length) begin
+            state <= BACK;
           end
-          state <= UPDATE;
-        end else if (t == length) begin
-          state <= BACK;
         end
 
         UPDATE: begin
           // move next→prev and advance time
-          for (i = 0; i < I; i = i + 1)
+          for (i = 0; i < I; i = i + 1) begin
             delta_prev[i] <= delta_next[i];
-          t     <= t + 1;
+          end
+          t <= t + 1;
           state <= CALC;
         end
 
         BACK: begin
-          // pick best final state
+          // Find best final state
           best_v = delta_prev[0];
           best_i = 0;
-          for (i = 1; i < I; i = i + 1)
+          for (i = 1; i < I; i = i + 1) begin
             if (delta_prev[i] > best_v) begin
               best_v = delta_prev[i];
               best_i = i;
             end
-
-          // write last element of path
-          path[t-1] <= best_i;
-
-          // walk back through psi_mem
-          for (i = t-1; i > 0; i = i - 1)
-            path[i-1] <= psi_mem[i][ path[i] ];
-
-          done  <= 1'b1;
-          state <= FINISH;
+          end
+          
+          // Set up for backtracking
+          path[length-1] <= best_i;
+          current_state <= best_i;
+          back_idx <= length - 1;
+          
+          if (length > 1) begin
+            state <= BACK_LOOP;
+          end else begin
+            done <= 1'b1;
+            valid_out <= 1'b1;
+            state <= FINISH;
+          end
         end
 
-        FINISH: if (!start)
-          state <= IDLE;
+        BACK_LOOP: begin
+          if (back_idx > 0) begin
+            current_state <= psi_mem[back_idx][current_state];
+            path[back_idx-1] <= psi_mem[back_idx][current_state];
+            back_idx <= back_idx - 1;
+          end else begin
+            done <= 1'b1;
+            valid_out <= 1'b1;
+            state <= FINISH;
+          end
+        end
 
+        FINISH: begin
+          if (!start) begin
+            state <= IDLE;
+          end
+        end
+
+        default: state <= IDLE;
       endcase
     end
   end

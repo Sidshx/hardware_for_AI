@@ -1,114 +1,148 @@
-
-`timescale 1ns/1ps
+//==============================================================================
+// TESTBENCH
+//==============================================================================
 
 module tb_viterbi;
 
-  //-----------------------------------------------------------------------------
-  // Parameters must match your RTL
-  //-----------------------------------------------------------------------------
-  localparam int I = 3;   // # hidden states
-  localparam int K = 3;   // # observation symbols
-  localparam int N = 5;   // length of test sequence
-  localparam int W = 20;  // fixed-point bit-width
+  parameter N = 8;   // sequence length  
+  parameter I = 3;   // states
+  parameter K = 3;   // symbols
+  parameter W = 20;  // width
 
-  //-----------------------------------------------------------------------------
-  // DUT interface signals
-  //-----------------------------------------------------------------------------
-  reg                       clk;
-  reg                       rst_n;
-  reg                       start;
-  reg  [$clog2(N)-1:0]      length;
-  reg  [$clog2(K)-1:0]      obs_in;
-  reg                       obs_valid;
+  // Testbench signals
+  reg                      clk;
+  reg                      rst_n;
+  reg                      start;
+  reg  [$clog2(N)-1:0]     length;
+  reg  [$clog2(K)-1:0]     obs_in;
+  reg                      obs_valid;
+  reg  signed [W-1:0]      logA [0:I*I-1];
+  reg  signed [W-1:0]      logC [0:I-1];
+  reg  signed [W-1:0]      logB [0:I*K-1];
+  wire [$clog2(I)-1:0]     path [0:N-1];
+  wire                     done;
+  wire                     valid_out;
 
-  // HMM parameters (must be regs so we can drive them)
-  reg signed [W-1:0]        logA [0:I-1][0:I-1];
-  reg signed [W-1:0]        logC [0:I-1];
-  reg signed [W-1:0]        logB [0:I-1][0:K-1];
+  // Test sequence
+  reg [$clog2(K)-1:0] test_obs [0:N-1];
+  reg [$clog2(N)-1:0] obs_count;
 
-  // DUT outputs
-  wire [$clog2(I)-1:0]      path [0:N-1];
-  wire                      done;
-
-  //-----------------------------------------------------------------------------
-  // Instantiate your top-level (viterbi_top)
-  //-----------------------------------------------------------------------------
-  viterbi_top #(
-    .I(I),
-    .K(K),
-    .N(N),
-    .W(W)
-  ) uut (
-    .clk       (clk),
-    .rst_n     (rst_n),
-    .start     (start),
-    .length    (length),
-    .obs_in    (obs_in),
-    .obs_valid (obs_valid),
-    .logA      (logA),
-    .logC      (logC),
-    .logB      (logB),
-    .path      (path),
-    .done      (done)
-  );
-
-  //-----------------------------------------------------------------------------
-  // Clock generator: 10 ns period
-  //-----------------------------------------------------------------------------
+  // Clock generation
   initial begin
     clk = 0;
     forever #5 clk = ~clk;
   end
 
-  integer i;
+  // DUT instantiation
+  viterbi_top #(
+    .N(N), .I(I), .K(K), .W(W)
+  ) dut (
+    .clk(clk),
+    .rst_n(rst_n),
+    .start(start),
+    .length(length),
+    .obs_in(obs_in),
+    .obs_valid(obs_valid),
+    .logA(logA),
+    .logC(logC),
+    .logB(logB),
+    .path(path),
+    .done(done),
+    .valid_out(valid_out)
+  );
 
-  //-----------------------------------------------------------------------------
-  // Test sequence
-  //-----------------------------------------------------------------------------
+  integer i, j, k;
+
+  // Test stimulus
   initial begin
-    // 1) Drive reset *before* any posedge clk
-    rst_n     = 1;
-    start     = 0;
+    // Initialize
+    rst_n = 0;
+    start = 0;
+    obs_in = 0;
     obs_valid = 0;
-    length    = 0;
-    #1;             // let nets settle
-    rst_n     = 0;  // assert
-    #20;            // hold for two full clock cycles
-    rst_n     = 1;  // release just before the 3rd rising edge
+    length = 5;
+    obs_count = 0;
 
-    // 2) Initialize HMM parameters
-    logC[0] = 20;  logC[1] = 18;  logC[2] = 16;
-    logA[0][0] = 20; logA[0][1] = 10; logA[0][2] =  5;
-    logA[1][0] = 10; logA[1][1] = 20; logA[1][2] =  5;
-    logA[2][0] =  5; logA[2][1] = 10; logA[2][2] = 20;
-    logB[0][0] = 15; logB[0][1] = 10; logB[0][2] =  5;
-    logB[1][0] = 10; logB[1][1] = 20; logB[1][2] =  5;
-    logB[2][0] =  5; logB[2][1] = 15; logB[2][2] = 20;
-
-    // 3) Kick off a Viterbi run of length N
-    length = N;
-    start  = 1;
-    #10;
-    start  = 0;
-
-    // 4) Stream N observations: 0,1,2,0,1
-    for (i = 0; i < N; i = i + 1) begin
-      obs_valid = 1;
-      obs_in    = i % K;
-      #10;
+    // Initialize HMM parameters (simplified values)
+    // logA: transition probabilities (log domain)
+    for (i = 0; i < I*I; i = i + 1) begin
+      logA[i] = -20'sd100; // Small transition prob
     end
+    // Diagonal elements higher (stay in same state more likely)
+    logA[0*I + 0] = -20'sd10;  // logA[0][0]
+    logA[1*I + 1] = -20'sd10;  // logA[1][1] 
+    logA[2*I + 2] = -20'sd10;  // logA[2][2]
+    logA[0*I + 1] = -20'sd50;  // logA[0][1]
+    logA[1*I + 2] = -20'sd50;  // logA[1][2]
+    logA[2*I + 0] = -20'sd50;  // logA[2][0]
+
+    // logC: initial state probabilities
+    logC[0] = -20'sd10;
+    logC[1] = -20'sd50;
+    logC[2] = -20'sd50;
+
+    // logB: emission probabilities
+    for (i = 0; i < I*K; i = i + 1) begin
+      logB[i] = -20'sd100;
+    end
+    // State 0 prefers obs 0, state 1 prefers obs 1, state 2 prefers obs 2
+    logB[0*K + 0] = -20'sd5;   // logB[0][0]
+    logB[1*K + 1] = -20'sd5;   // logB[1][1]
+    logB[2*K + 2] = -20'sd5;   // logB[2][2]
+
+    // Test observation sequence
+    test_obs[0] = 0;
+    test_obs[1] = 0;
+    test_obs[2] = 1;
+    test_obs[3] = 1;
+    test_obs[4] = 2;
+
+    // Reset
+    #20 rst_n = 1;
+    #20;
+
+    $display("Starting Viterbi test...");
+    $display("Test sequence: %d %d %d %d %d", 
+             test_obs[0], test_obs[1], test_obs[2], test_obs[3], test_obs[4]);
+
+    // Start processing  
+    start = 1;
+    obs_in = test_obs[0];
+    obs_valid = 1;
+    #10 start = 0;
+
+    // Feed observations
+    for (k = 1; k < length; k = k + 1) begin
+      @(posedge clk);
+      obs_in = test_obs[k];
+      obs_valid = 1;
+      #1; // Small delay
+    end
+
     obs_valid = 0;
 
-    // 5) Wait for done, then one extra cycle so back–pointer writes path[0]
+    // Wait for completion
     wait(done);
-    #10;
+    @(posedge clk);
 
-    // 6) Print out the decoded path
-    $display("\n=== Viterbi accelerator result ===");
-    for (i = 0; i < N; i = i + 1)
-      $display(" path[%0d] = %0d", i, path[i]);
+    $display("Viterbi decoding complete!");
+    $display("Decoded path: %d %d %d %d %d", 
+             path[0], path[1], path[2], path[3], path[4]);
 
+    #50;
     $finish;
+  end
+
+  // Monitor
+  initial begin
+    $monitor("t=%0t state=%d t=%d obs_in=%d obs_valid=%d done=%d", 
+             $time, dut.state, dut.t, obs_in, obs_valid, done);
+  end
+
+  // Waveform dump
+  initial begin
+    $dumpfile("viterbi_tb.vcd");
+    $dumpvars(0, tb_viterbi_top);
   end
 
 endmodule
