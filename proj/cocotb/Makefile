@@ -1,4 +1,4 @@
-# Makefile for Cocotb Viterbi simulation
+#Makefile for Cocotb Viterbi simulation
 
 # Default simulator (can be changed to modelsim, xcelium, etc.)
 SIM ?= icarus
@@ -21,12 +21,4 @@ ifeq ($(SIM),icarus)
     PLUSARGS += +define+COCOTB_SIM=1
 endif
 
-# Clean target
-clean:
-	rm -rf __pycache__
-	rm -rf sim_build
-	rm -f results.xml
-	rm -f *.vcd
-	rm -f *.fst
 
-.PHONY: clean
