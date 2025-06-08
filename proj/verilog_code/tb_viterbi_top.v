@@ -2,7 +2,7 @@
 // TESTBENCH
 //==============================================================================
 
-module tb_viterbi_top;
+module tb_viterbi;
 
   parameter N = 8;   // sequence length  
   parameter I = 3;   // states
@@ -142,7 +142,7 @@ module tb_viterbi_top;
   // Waveform dump
   initial begin
     $dumpfile("viterbi_tb.vcd");
-    $dumpvars(0, tb_viterbi_top);
+    $dumpvars(0, tb_viterbi);
   end
 
 endmodule

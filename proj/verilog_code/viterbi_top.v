@@ -45,35 +45,56 @@ module viterbi_top #(
   wire signed [W-1:0]         delta_out_w [0:I-1];
   wire [$clog2(I)-1:0]        psi_out_w   [0:I-1];
 
-  // Create column arrays for each PE
-  reg signed [W-1:0]          logA_col [0:I-1][0:I-1];
+  // Individual column wires for each PE
+  wire signed [W-1:0]         pe0_col [0:I-1];
+  wire signed [W-1:0]         pe1_col [0:I-1];
+  wire signed [W-1:0]         pe2_col [0:I-1];
   
-  // Extract columns from flattened logA
-  integer x, y;
-  always @(*) begin
-    for (x = 0; x < I; x = x + 1) begin
-      for (y = 0; y < I; y = y + 1) begin
-        logA_col[y][x] = logA[x*I + y];  // logA_col[y][x] = logA[x][y]
-      end
-    end
-  end
-
-  // Instantiate I PEs
-  genvar j;
+  // Assign columns manually for each PE
+  genvar x;
   generate
-    for (j = 0; j < I; j = j + 1) begin : PES
-      viterbi_pe #(.I(I), .W(W)) pe (
-        .clk        (clk),
-        .rst_n      (rst_n),
-        .obs        (obs_in),
-        .delta_prev (delta_prev),
-        .logA_col   (logA_col[j]),
-        .logB_emit  (logB[j*K + obs_in]),
-        .delta_out  (delta_out_w[j]),
-        .psi_out    (psi_out_w[j])
-      );
+    for (x = 0; x < I; x = x + 1) begin : COL_ASSIGN
+      assign pe0_col[x] = logA[x*I + 0];  // Column 0 of logA
+      assign pe1_col[x] = logA[x*I + 1];  // Column 1 of logA  
+      assign pe2_col[x] = logA[x*I + 2];  // Column 2 of logA
     end
   endgenerate
+
+  // PE0 instantiation
+  viterbi_pe #(.I(I), .W(W)) pe0 (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .obs        (obs_in),
+    .delta_prev (delta_prev),
+    .logA_col   (pe0_col),
+    .logB_emit  (logB[0*K + obs_in]),
+    .delta_out  (delta_out_w[0]),
+    .psi_out    (psi_out_w[0])
+  );
+
+  // PE1 instantiation
+  viterbi_pe #(.I(I), .W(W)) pe1 (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .obs        (obs_in),
+    .delta_prev (delta_prev),
+    .logA_col   (pe1_col),
+    .logB_emit  (logB[1*K + obs_in]),
+    .delta_out  (delta_out_w[1]),
+    .psi_out    (psi_out_w[1])
+  );
+
+  // PE2 instantiation
+  viterbi_pe #(.I(I), .W(W)) pe2 (
+    .clk        (clk),
+    .rst_n      (rst_n),
+    .obs        (obs_in),
+    .delta_prev (delta_prev),
+    .logA_col   (pe2_col),
+    .logB_emit  (logB[2*K + obs_in]),
+    .delta_out  (delta_out_w[2]),
+    .psi_out    (psi_out_w[2])
+  );
 
   integer i;
   reg signed [W-1:0]          best_v;
