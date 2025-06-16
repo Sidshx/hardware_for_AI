@@ -1,24 +1,23 @@
-#Makefile for Cocotb Viterbi simulation
 
-# Default simulator (can be changed to modelsim, xcelium, etc.)
-SIM ?= icarus
+# Tell cocotb we’re using Verilog
+TOPLEVEL_LANG = verilog
 
-# Verilog source files
-VERILOG_SOURCES = viterbi_top.v
+# List all your Verilog source files
+VERILOG_SOURCES = \
+    $(PWD)/viterbi_chain.v \
+    $(PWD)/viterbi_pe.v
 
-# Top level module
-TOPLEVEL = viterbi_top
+# The name of the top-level module in viterbi_chain.v
+TOPLEVEL = viterbi_chain
 
-# Python test module
-MODULE = test_viterbi_cocotb
+# Your cocotb testbench module
+MODULE = tests.test_viterbi_systolic
 
-# Include cocotb's make rules to take care of the build
+# Choose simulator (icarus or verilator)
+SIM = icarus
+
+# Make sure Python finds your DUT and tests/
+export PYTHONPATH := $(PWD):$(PYTHONPATH)
+
+# Include the cocotb-provided build rules
 include $(shell cocotb-config --makefiles)/Makefile.sim
-
-# Optional: Add waveform generation for debugging
-ifeq ($(SIM),icarus)
-    COMPILE_ARGS += -DICARUS
-    PLUSARGS += +define+COCOTB_SIM=1
-endif
-
-
