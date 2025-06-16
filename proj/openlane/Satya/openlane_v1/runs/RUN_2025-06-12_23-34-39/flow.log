@@ -1,0 +1,419 @@
+Starting…
+Running 'Verilator.Lint' at 'runs/RUN_2025-06-12_23-34-39/01-verilator-lint'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/01-verilator-lint/verilator-lint.log'[/repr.filename]…
+Running 'Checker.LintTimingConstructs' at 'runs/RUN_2025-06-12_23-34-39/02-checker-linttimingconstructs'…
+Check for Lint Timing Errors clear.
+Running 'Checker.LintErrors' at 'runs/RUN_2025-06-12_23-34-39/03-checker-linterrors'…
+Check for Lint errors clear.
+Running 'Checker.LintWarnings' at 'runs/RUN_2025-06-12_23-34-39/04-checker-lintwarnings'…
+446 Lint warnings found.
+Running 'Yosys.JsonHeader' at 'runs/RUN_2025-06-12_23-34-39/05-yosys-jsonheader'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/05-yosys-jsonheader/yosys-jsonheader.log'[/repr.filename]…
+Running 'Yosys.Synthesis' at 'runs/RUN_2025-06-12_23-34-39/06-yosys-synthesis'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/06-yosys-synthesis/yosys-synthesis.log'[/repr.filename]…
+Parsing synthesis checks…
+Running 'Checker.YosysUnmappedCells' at 'runs/RUN_2025-06-12_23-34-39/07-checker-yosysunmappedcells'…
+Check for Unmapped Yosys instances clear.
+Running 'Checker.YosysSynthChecks' at 'runs/RUN_2025-06-12_23-34-39/08-checker-yosyssynthchecks'…
+Check for Yosys check errors clear.
+Running 'Checker.NetlistAssignStatements' at 'runs/RUN_2025-06-12_23-34-39/09-checker-netlistassignstatements'…
+Running 'OpenROAD.CheckSDCFiles' at 'runs/RUN_2025-06-12_23-34-39/10-openroad-checksdcfiles'…
+Running 'OpenROAD.CheckMacroInstances' at 'runs/RUN_2025-06-12_23-34-39/11-openroad-checkmacroinstances'…
+No macros found, skipping instance check…
+Running 'OpenROAD.STAPrePNR' at 'runs/RUN_2025-06-12_23-34-39/12-openroad-staprepnr'…
+Starting STA for the nom_tt_025C_1v80 timing corner…
+Starting STA for the nom_ss_100C_1v60 timing corner…
+Starting STA for the nom_ff_n40C_1v95 timing corner…
+Skipping corner min_tt_025C_1v80 for STA (identical to nom_tt_025C_1v80 at this stage)…
+Skipping corner min_ss_100C_1v60 for STA (identical to nom_ss_100C_1v60 at this stage)…
+Skipping corner min_ff_n40C_1v95 for STA (identical to nom_ff_n40C_1v95 at this stage)…
+Skipping corner max_tt_025C_1v80 for STA (identical to nom_tt_025C_1v80 at this stage)…
+Skipping corner max_ss_100C_1v60 for STA (identical to nom_ss_100C_1v60 at this stage)…
+Skipping corner max_ff_n40C_1v95 for STA (identical to nom_ff_n40C_1v95 at this stage)…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/12-openroad-staprepnr/nom_ss_100C_1v60/sta.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/12-openroad-staprepnr/nom_tt_025C_1v80/sta.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/12-openroad-staprepnr/nom_ff_n40C_1v95/sta.log'[/repr.filename]…
+Finished STA for the nom_ff_n40C_1v95 timing corner.
+Finished STA for the nom_tt_025C_1v80 timing corner.
+Finished STA for the nom_ss_100C_1v60 timing corner.
+Running 'OpenROAD.Floorplan' at 'runs/RUN_2025-06-12_23-34-39/13-openroad-floorplan'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/13-openroad-floorplan/openroad-floorplan.log'[/repr.filename]…
+Running 'Odb.CheckMacroAntennaProperties' at 'runs/RUN_2025-06-12_23-34-39/14-odb-checkmacroantennaproperties'…
+No cells provided, skipping…
+Running 'Odb.SetPowerConnections' at 'runs/RUN_2025-06-12_23-34-39/15-odb-setpowerconnections'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/15-odb-setpowerconnections/odb-setpowerconnections.log'[/repr.filename]…
+Running 'Odb.ManualMacroPlacement' at 'runs/RUN_2025-06-12_23-34-39/16-odb-manualmacroplacement'…
+No instances found, skipping 'Odb.ManualMacroPlacement'…
+Running 'OpenROAD.CutRows' at 'runs/RUN_2025-06-12_23-34-39/17-openroad-cutrows'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/17-openroad-cutrows/openroad-cutrows.log'[/repr.filename]…
+Running 'OpenROAD.TapEndcapInsertion' at 'runs/RUN_2025-06-12_23-34-39/18-openroad-tapendcapinsertion'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/18-openroad-tapendcapinsertion/openroad-tapendcapinsertion.log'[/repr.filename]…
+Running 'Odb.AddPDNObstructions' at 'runs/RUN_2025-06-12_23-34-39/19-odb-addpdnobstructions'…
+'PDN_OBSTRUCTIONS' is not defined. Skipping 'Odb.AddPDNObstructions'…
+Running 'OpenROAD.GeneratePDN' at 'runs/RUN_2025-06-12_23-34-39/20-openroad-generatepdn'…
+'FP_PDN_CFG' not explicitly set, setting it to /nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/openroad/common/pdn_cfg.tcl…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/20-openroad-generatepdn/openroad-generatepdn.log'[/repr.filename]…
+Running 'Odb.RemovePDNObstructions' at 'runs/RUN_2025-06-12_23-34-39/21-odb-removepdnobstructions'…
+'PDN_OBSTRUCTIONS' is not defined. Skipping 'Odb.RemovePDNObstructions'…
+Running 'Odb.AddRoutingObstructions' at 'runs/RUN_2025-06-12_23-34-39/22-odb-addroutingobstructions'…
+'ROUTING_OBSTRUCTIONS' is not defined. Skipping 'Odb.AddRoutingObstructions'…
+Running 'OpenROAD.GlobalPlacementSkipIO' at 'runs/RUN_2025-06-12_23-34-39/23-openroad-globalplacementskipio'…
+'PL_TARGET_DENSITY_PCT' not explicitly set, using dynamically calculated target density: 57.058800…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/23-openroad-globalplacementskipio/openroad-globalplacementskipio.log'[/repr.filename]…
+Running 'OpenROAD.IOPlacement' at 'runs/RUN_2025-06-12_23-34-39/24-openroad-ioplacement'…
+FP_PIN_ORDER_CFG is set. Skipping 'OpenROAD.IOPlacement'…
+Running 'Odb.CustomIOPlacement' at 'runs/RUN_2025-06-12_23-34-39/25-odb-customioplacement'…
+Logging subprocess to [repr.filename]'runs/RUN_2025-06-12_23-34-39/25-odb-customioplacement/odb-customioplacement.log'[/repr.filename]…
+logB_flat\[.*\] not found in design but found in config.
+logA_flat\[.*\] not found in design but found in config.
+logC_flat\[.*\] not found in design but found in config.
+logA_0[1] not found in config but found in design.
+logC_2[13] not found in config but found in design.
+logB_2[11] not found in config but found in design.
+logB_8[5] not found in config but found in design.
+logA_7[13] not found in config but found in design.
+logA_8[7] not found in config but found in design.
+logB_2[13] not found in config but found in design.
+logA_6[3] not found in config but found in design.
+logC_0[1] not found in config but found in design.
+logA_3[11] not found in config but found in design.
+logB_0[6] not found in config but found in design.
+logB_4[15] not found in config but found in design.
+logA_3[13] not found in config but found in design.
+logA_3[10] not found in config but found in design.
+logC_2[6] not found in config but found in design.
+logA_5[0] not found in config but found in design.
+logA_6[15] not found in config but found in design.
+logA_7[11] not found in config but found in design.
+logB_6[10] not found in config but found in design.
+logA_0[14] not found in config but found in design.
+logB_6[3] not found in config but found in design.
+logB_6[12] not found in config but found in design.
+logA_5[5] not found in config but found in design.
+logA_5[1] not found in config but found in design.
+logA_3[2] not found in config but found in design.
+logB_1[0] not found in config but found in design.
+logA_2[7] not found in config but found in design.
+logA_3[9] not found in config but found in design.
+logA_1[8] not found in config but found in design.
+logC_1[14] not found in config but found in design.
+logA_7[5] not found in config but found in design.
+logA_8[15] not found in config but found in design.
+logA_0[10] not found in config but found in design.
+logC_1[11] not found in config but found in design.
+logB_4[8] not found in config but found in design.
+logB_0[9] not found in config but found in design.
+logB_2[2] not found in config but found in design.
+logA_1[2] not found in config but found in design.
+logA_6[7] not found in config but found in design.
+logB_6[15] not found in config but found in design.
+logC_2[7] not found in config but found in design.
+logC_1[7] not found in config but found in design.
+logA_6[10] not found in config but found in design.
+logC_1[9] not found in config but found in design.
+logA_5[13] not found in config but found in design.
+logA_7[6] not found in config but found in design.
+logB_7[3] not found in config but found in design.
+logB_4[0] not found in config but found in design.
+logB_1[2] not found in config but found in design.
+logB_7[12] not found in config but found in design.
+logA_3[1] not found in config but found in design.
+logA_1[9] not found in config but found in design.
+logA_6[0] not found in config but found in design.
+logB_3[11] not found in config but found in design.
+logA_8[9] not found in config but found in design.
+logB_1[1] not found in config but found in design.
+logA_5[12] not found in config but found in design.
+logB_5[10] not found in config but found in design.
+logB_3[4] not found in config but found in design.
+logB_1[5] not found in config but found in design.
+logC_2[8] not found in config but found in design.
+logB_0[11] not found in config but found in design.
+logA_0[2] not found in config but found in design.
+logA_4[0] not found in config but found in design.
+logA_3[7] not found in config but found in design.
+logB_4[2] not found in config but found in design.
+logB_4[9] not found in config but found in design.
+logA_3[5] not found in config but found in design.
+logA_8[5] not found in config but found in design.
+logB_4[12] not found in config but found in design.
+logB_6[7] not found in config but found in design.
+logA_1[15] not found in config but found in design.
+logB_7[4] not found in config but found in design.
+logB_6[14] not found in config but found in design.
+logA_1[12] not found in config but found in design.
+logB_2[1] not found in config but found in design.
+logA_4[5] not found in config but found in design.
+logB_6[8] not found in config but found in design.
+logA_4[15] not found in config but found in design.
+logA_6[11] not found in config but found in design.
+logB_6[1] not found in config but found in design.
+logA_5[3] not found in config but found in design.
+logB_6[4] not found in config but found in design.
+logC_0[0] not found in config but found in design.
+logA_8[8] not found in config but found in design.
+logB_6[5] not found in config but found in design.
+logA_8[14] not found in config but found in design.
+logB_2[8] not found in config but found in design.
+logB_3[6] not found in config but found in design.
+logB_8[3] not found in config but found in design.
+logA_4[9] not found in config but found in design.
+logA_8[0] not found in config but found in design.
+logC_2[0] not found in config but found in design.
+logC_1[2] not found in config but found in design.
+logB_2[0] not found in config but found in design.
+logB_3[9] not found in config but found in design.
+logB_8[7] not found in config but found in design.
+logA_3[8] not found in config but found in design.
+logB_8[4] not found in config but found in design.
+logA_7[8] not found in config but found in design.
+logC_0[14] not found in config but found in design.
+logB_4[14] not found in config but found in design.
+logB_7[1] not found in config but found in design.
+logB_7[0] not found in config but found in design.
+logA_1[7] not found in config but found in design.
+logB_4[13] not found in config but found in design.
+logA_7[1] not found in config but found in design.
+logB_8[12] not found in config but found in design.
+logA_8[2] not found in config but found in design.
+logB_0[13] not found in config but found in design.
+logC_2[12] not found in config but found in design.
+logA_7[14] not found in config but found in design.
+logC_2[3] not found in config but found in design.
+logC_1[15] not found in config but found in design.
+logA_2[14] not found in config but found in design.
+logB_0[0] not found in config but found in design.
+logB_4[10] not found in config but found in design.
+logA_5[7] not found in config but found in design.
+logC_0[8] not found in config but found in design.
+logC_2[2] not found in config but found in design.
+logC_0[15] not found in config but found in design.
+logC_0[7] not found in config but found in design.
+logB_0[5] not found in config but found in design.
+logB_0[8] not found in config but found in design.
+logC_2[15] not found in config but found in design.
+logC_1[12] not found in config but found in design.
+logA_0[9] not found in config but found in design.
+logB_0[12] not found in config but found in design.
+logA_0[3] not found in config but found in design.
+logA_6[9] not found in config but found in design.
+logA_1[14] not found in config but found in design.
+logC_2[1] not found in config but found in design.
+logB_2[15] not found in config but found in design.
+logC_0[5] not found in config but found in design.
+logB_8[0] not found in config but found in design.
+logB_5[0] not found in config but found in design.
+logB_0[10] not found in config but found in design.
+logA_2[11] not found in config but found in design.
+logA_7[15] not found in config but found in design.
+logA_5[14] not found in config but found in design.
+logA_4[8] not found in config but found in design.
+logB_0[7] not found in config but found in design.
+logC_0[12] not found in config but found in design.
+logA_1[13] not found in config but found in design.
+logC_2[5] not found in config but found in design.
+logA_7[3] not found in config but found in design.
+logB_1[3] not found in config but found in design.
+logB_5[2] not found in config but found in design.
+logB_7[8] not found in config but found in design.
+logB_3[8] not found in config but found in design.
+logB_8[13] not found in config but found in design.
+logA_1[5] not found in config but found in design.
+logB_1[11] not found in config but found in design.
+logC_1[1] not found in config but found in design.
+logA_5[6] not found in config but found in design.
+logB_4[11] not found in config but found in design.
+logB_6[11] not found in config but found in design.
+logB_5[13] not found in config but found in design.
+logA_0[5] not found in config but found in design.
+logB_0[1] not found in config but found in design.
+logA_4[7] not found in config but found in design.
+logA_2[2] not found in config but found in design.
+logB_0[14] not found in config but found in design.
+logA_2[3] not found in config but found in design.
+logA_1[4] not found in config but found in design.
+logA_8[1] not found in config but found in design.
+logA_5[8] not found in config but found in design.
+logC_0[11] not found in config but found in design.
+logA_4[12] not found in config but found in design.
+logA_8[3] not found in config but found in design.
+logB_4[5] not found in config but found in design.
+logA_3[14] not found in config but found in design.
+logA_7[12] not found in config but found in design.
+logB_5[14] not found in config but found in design.
+logA_6[2] not found in config but found in design.
+logB_4[1] not found in config but found in design.
+logC_0[13] not found in config but found in design.
+logA_0[0] not found in config but found in design.
+logB_0[4] not found in config but found in design.
+logB_1[14] not found in config but found in design.
+logB_3[2] not found in config but found in design.
+logB_7[7] not found in config but found in design.
+logB_0[15] not found in config but found in design.
+logA_3[12] not found in config but found in design.
+logB_2[5] not found in config but found in design.
+logB_2[7] not found in config but found in design.
+logA_8[10] not found in config but found in design.
+logC_2[10] not found in config but found in design.
+logB_2[4] not found in config but found in design.
+logA_5[2] not found in config but found in design.
+logB_0[3] not found in config but found in design.
+logC_0[10] not found in config but found in design.
+logB_8[1] not found in config but found in design.
+logB_2[3] not found in config but found in design.
+logB_7[11] not found in config but found in design.
+logA_3[6] not found in config but found in design.
+logA_2[13] not found in config but found in design.
+logB_7[15] not found in config but found in design.
+logA_5[9] not found in config but found in design.
+logA_6[5] not found in config but found in design.
+logB_1[10] not found in config but found in design.
+logB_4[7] not found in config but found in design.
+logA_6[12] not found in config but found in design.
+logA_0[12] not found in config but found in design.
+logA_4[4] not found in config but found in design.
+logB_5[15] not found in config but found in design.
+logB_3[14] not found in config but found in design.
+logB_4[6] not found in config but found in design.
+logA_6[13] not found in config but found in design.
+logA_7[0] not found in config but found in design.
+logA_3[3] not found in config but found in design.
+logA_5[10] not found in config but found in design.
+logA_6[6] not found in config but found in design.
+logB_7[9] not found in config but found in design.
+logA_0[6] not found in config but found in design.
+logB_5[6] not found in config but found in design.
+logA_6[1] not found in config but found in design.
+logA_2[10] not found in config but found in design.
+logA_2[0] not found in config but found in design.
+logA_6[4] not found in config but found in design.
+logB_6[6] not found in config but found in design.
+logB_5[4] not found in config but found in design.
+logA_7[9] not found in config but found in design.
+logA_1[11] not found in config but found in design.
+logB_3[12] not found in config but found in design.
+logA_6[14] not found in config but found in design.
+logA_2[15] not found in config but found in design.
+logB_5[11] not found in config but found in design.
+logB_5[9] not found in config but found in design.
+logB_8[11] not found in config but found in design.
+logB_5[8] not found in config but found in design.
+logB_1[8] not found in config but found in design.
+logA_4[6] not found in config but found in design.
+logC_2[9] not found in config but found in design.
+logB_7[2] not found in config but found in design.
+logC_1[0] not found in config but found in design.
+logB_2[10] not found in config but found in design.
+logA_7[2] not found in config but found in design.
+logB_3[15] not found in config but found in design.
+logB_6[9] not found in config but found in design.
+logB_1[4] not found in config but found in design.
+logA_0[15] not found in config but found in design.
+logC_1[10] not found in config but found in design.
+logB_6[2] not found in config but found in design.
+logB_7[5] not found in config but found in design.
+logB_8[8] not found in config but found in design.
+logB_7[13] not found in config but found in design.
+logB_3[0] not found in config but found in design.
+logA_5[11] not found in config but found in design.
+logA_4[2] not found in config but found in design.
+logA_5[4] not found in config but found in design.
+logB_1[7] not found in config but found in design.
+logC_0[3] not found in config but found in design.
+logA_4[10] not found in config but found in design.
+logB_3[13] not found in config but found in design.
+logA_1[10] not found in config but found in design.
+logB_5[1] not found in config but found in design.
+logB_3[5] not found in config but found in design.
+logB_4[3] not found in config but found in design.
+logB_8[10] not found in config but found in design.
+logA_3[4] not found in config but found in design.
+logA_8[12] not found in config but found in design.
+logB_0[2] not found in config but found in design.
+logA_1[6] not found in config but found in design.
+logA_0[7] not found in config but found in design.
+logA_2[9] not found in config but found in design.
+logB_1[13] not found in config but found in design.
+logA_7[4] not found in config but found in design.
+logA_4[11] not found in config but found in design.
+logA_2[4] not found in config but found in design.
+logB_8[9] not found in config but found in design.
+logA_8[13] not found in config but found in design.
+logA_4[3] not found in config but found in design.
+logB_3[3] not found in config but found in design.
+logC_1[13] not found in config but found in design.
+logA_3[15] not found in config but found in design.
+logA_6[8] not found in config but found in design.
+logB_5[5] not found in config but found in design.
+logB_5[7] not found in config but found in design.
+logA_0[8] not found in config but found in design.
+logA_8[6] not found in config but found in design.
+logB_4[4] not found in config but found in design.
+logA_2[6] not found in config but found in design.
+logA_0[4] not found in config but found in design.
+logA_2[8] not found in config but found in design.
+logB_1[12] not found in config but found in design.
+logB_8[2] not found in config but found in design.
+logC_1[8] not found in config but found in design.
+logC_1[4] not found in config but found in design.
+logA_1[0] not found in config but found in design.
+logC_1[6] not found in config but found in design.
+logB_3[7] not found in config but found in design.
+logB_8[6] not found in config but found in design.
+logA_0[11] not found in config but found in design.
+logA_2[1] not found in config but found in design.
+logC_2[11] not found in config but found in design.
+logA_2[12] not found in config but found in design.
+logB_2[9] not found in config but found in design.
+logC_0[6] not found in config but found in design.
+logC_0[2] not found in config but found in design.
+logA_4[1] not found in config but found in design.
+logA_7[10] not found in config but found in design.
+logB_3[1] not found in config but found in design.
+logA_2[5] not found in config but found in design.
+logA_1[3] not found in config but found in design.
+logA_4[13] not found in config but found in design.
+logB_2[12] not found in config but found in design.
+logC_2[4] not found in config but found in design.
+logA_0[13] not found in config but found in design.
+logA_5[15] not found in config but found in design.
+logB_6[13] not found in config but found in design.
+logB_6[0] not found in config but found in design.
+logC_1[5] not found in config but found in design.
+logC_1[3] not found in config but found in design.
+logB_3[10] not found in config but found in design.
+logB_7[10] not found in config but found in design.
+logB_7[14] not found in config but found in design.
+logB_7[6] not found in config but found in design.
+logC_2[14] not found in config but found in design.
+logC_0[9] not found in config but found in design.
+logB_5[12] not found in config but found in design.
+logA_4[14] not found in config but found in design.
+logB_1[9] not found in config but found in design.
+logB_8[14] not found in config but found in design.
+logA_3[0] not found in config but found in design.
+logB_2[14] not found in config but found in design.
+logA_8[4] not found in config but found in design.
+logA_1[1] not found in config but found in design.
+logB_5[3] not found in config but found in design.
+logA_7[7] not found in config but found in design.
+logB_8[15] not found in config but found in design.
+logC_0[4] not found in config but found in design.
+logA_8[11] not found in config but found in design.
+logB_1[6] not found in config but found in design.
+logB_2[6] not found in config but found in design.
+logB_1[15] not found in config but found in design.
+Subprocess had a non-zero exit.
+Last 10 line(s):
+[ERROR] logB_5[3] not found in config but found in design.
+[ERROR] logA_7[7] not found in config but found in design.
+[ERROR] logB_8[15] not found in config but found in design.
+[ERROR] logC_0[4] not found in config but found in design.
+[ERROR] logA_8[11] not found in config but found in design.
+[ERROR] logB_1[6] not found in config but found in design.
+[ERROR] logB_2[6] not found in config but found in design.
+[ERROR] logB_1[15] not found in config but found in design.
+Top-level design name: viterbi_top
+Critical mismatches found.
+
+Full log file: 'runs/RUN_2025-06-12_23-34-39/25-odb-customioplacement/odb-customioplacement.log'

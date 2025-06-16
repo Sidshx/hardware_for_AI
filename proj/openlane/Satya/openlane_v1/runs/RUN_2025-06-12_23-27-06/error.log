@@ -1,0 +1,7 @@
+Subprocess had a non-zero exit.
+Last 3 line(s):
+[WARNING ORD-0039] .openroad ignored with -python
+line 5:2 missing Direction at 'Clock'
+An exception occurred: Syntax Error at 5:2: missing Direction at 'Clock'
+
+Full log file: 'runs/RUN_2025-06-12_23-27-06/25-odb-customioplacement/odb-customioplacement.log'

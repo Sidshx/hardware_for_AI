@@ -1,0 +1,43 @@
+[WARNING ORD-0039] .openroad ignored with -python
+/nix/store/alhgaybdgmv706469rp57ggcyg3750yk-openroad-python3-3.11.9-env/lib/openroad-python3.11/site-packages/ioplace_parser/parse.py:64: UserWarning: Specifying bit-major using the direction token ('#BUS_SORT') is deprecated: use @bit_major.
+  warnings.warn(
+Top-level design name: viterbi_top
+Block boundaries: 0 0 230130 240850
+Horizontal Tracks Origin: 340, Count: 354, Step: 680
+Vertical Tracks Origin: 230, Count: 500, Step: 460
+Placement details for the N side
+Virtual pin count:  0
+Actual pin count:  5
+Total pin count:  5
+Tracks count:  500
+Tracks per pin:  100
+Used tracks count:  401
+Unused track count:  99
+Starting track index:  49
+Placement details for the E side
+Virtual pin count:  0
+Actual pin count:  5
+Total pin count:  5
+Tracks count:  177
+Tracks per pin:  35
+Used tracks count:  141
+Unused track count:  36
+Starting track index:  18
+Placement details for the W side
+Virtual pin count:  0
+Actual pin count:  64
+Total pin count:  64
+Tracks count:  177
+Tracks per pin:  2
+Used tracks count:  127
+Unused track count:  50
+Starting track index:  25
+Placement details for the S side
+Virtual pin count:  0
+Actual pin count:  288
+Total pin count:  288
+Tracks count:  500
+Tracks per pin:  1
+Used tracks count:  288
+Unused track count:  212
+Starting track index:  106

@@ -1,102 +1,96 @@
-//==============================================================================
-// SIMPLE TESTBENCH
-//==============================================================================
+`timescale 1ns/1ps
 
 module tb_viterbi;
   
-  parameter N = 8, I = 3, K = 3, W = 16;
+  parameter W = 16;
   
   reg clk, rst_n, start, obs_valid;
   reg [2:0] length;
   reg [1:0] obs_in;
-  reg signed [W-1:0] logA [0:8];
-  reg signed [W-1:0] logC [0:2]; 
-  reg signed [W-1:0] logB [0:8];
-  wire [1:0] path [0:7];
+  
+  // Individual pin connections
+  reg signed [W-1:0] logA_0, logA_1, logA_2, logA_3, logA_4, logA_5, logA_6, logA_7, logA_8;
+  reg signed [W-1:0] logC_0, logC_1, logC_2;
+  reg signed [W-1:0] logB_0, logB_1, logB_2, logB_3, logB_4, logB_5, logB_6, logB_7, logB_8;
+  
+  wire [1:0] path_0, path_1, path_2, path_3, path_4;
   wire done;
 
-  // Test observation sequence
-  reg [1:0] obs_seq [0:4];
-  integer obs_idx;
-
-  // Clock
   always #5 clk = ~clk;
 
-  // DUT
   viterbi_top dut (
     .clk(clk), .rst_n(rst_n), .start(start), .length(length),
     .obs_in(obs_in), .obs_valid(obs_valid),
-    .logA(logA), .logC(logC), .logB(logB),
-    .path(path), .done(done)
+    .logA_0(logA_0), .logA_1(logA_1), .logA_2(logA_2),
+    .logA_3(logA_3), .logA_4(logA_4), .logA_5(logA_5),
+    .logA_6(logA_6), .logA_7(logA_7), .logA_8(logA_8),
+    .logC_0(logC_0), .logC_1(logC_1), .logC_2(logC_2),
+    .logB_0(logB_0), .logB_1(logB_1), .logB_2(logB_2),
+    .logB_3(logB_3), .logB_4(logB_4), .logB_5(logB_5),
+    .logB_6(logB_6), .logB_7(logB_7), .logB_8(logB_8),
+    .path_0(path_0), .path_1(path_1), .path_2(path_2), 
+    .path_3(path_3), .path_4(path_4), .path_5(), .path_6(), .path_7(),
+    .done(done)
   );
 
-  integer i;
-
   initial begin
-    // Initialize
     clk = 0; rst_n = 0; start = 0; obs_valid = 0;
-    obs_in = 0; length = 5; obs_idx = 0;
 
-    // Simple HMM parameters (small negative numbers in log domain)
-    // Transition matrix logA (prefer staying in same state)
-    logA[0] = -16'd10;  logA[1] = -16'd50;  logA[2] = -16'd50;  // from state 0
-    logA[3] = -16'd50;  logA[4] = -16'd10;  logA[5] = -16'd50;  // from state 1  
-    logA[6] = -16'd50;  logA[7] = -16'd50;  logA[8] = -16'd10;  // from state 2
+    // Simple HMM parameters - each state strongly prefers its own observation
+    // Transition matrix A (strong self-transitions)
+    logA_0 = -16'd5;   logA_1 = -16'd50;  logA_2 = -16'd50;  // from state 0
+    logA_3 = -16'd50;  logA_4 = -16'd5;   logA_5 = -16'd50;  // from state 1
+    logA_6 = -16'd50;  logA_7 = -16'd50;  logA_8 = -16'd5;   // from state 2
 
-    // Initial state probs (favor state 0)
-    logC[0] = -16'd5;   logC[1] = -16'd50;  logC[2] = -16'd50;
+    // Initial state probabilities (equal)
+    logC_0 = -16'd10;  logC_1 = -16'd10;  logC_2 = -16'd10;
 
-    // Emission matrix logB (each state prefers different observation)
-    logB[0] = -16'd5;   logB[1] = -16'd50;  logB[2] = -16'd50;  // state 0 prefers obs 0
-    logB[3] = -16'd50;  logB[4] = -16'd5;   logB[5] = -16'd50;  // state 1 prefers obs 1
-    logB[6] = -16'd50;  logB[7] = -16'd50;  logB[8] = -16'd5;   // state 2 prefers obs 2
+    // Emission matrix B (each state prefers its observation)
+    logB_0 = -16'd1;   logB_1 = -16'd50;  logB_2 = -16'd50;  // state 0 prefers obs 0
+    logB_3 = -16'd50;  logB_4 = -16'd1;   logB_5 = -16'd50;  // state 1 prefers obs 1
+    logB_6 = -16'd50;  logB_7 = -16'd50;  logB_8 = -16'd1;   // state 2 prefers obs 2
 
-    // Test sequence
-    obs_seq[0] = 0; obs_seq[1] = 0; obs_seq[2] = 1; obs_seq[3] = 1; obs_seq[4] = 2;
-
-    // Reset
     #10 rst_n = 1;
     #10;
 
-    $display("=== Viterbi Test ===");
-    $display("Observation sequence: %d %d %d %d %d", 
-             obs_seq[0], obs_seq[1], obs_seq[2], obs_seq[3], obs_seq[4]);
-
-    // Start with first observation
-    obs_in = obs_seq[0];
+    $display("=== Simple Test: [0, 1, 2] ===");
+    $display("Expected: [0, 1, 2] (each state prefers its observation)");
+    
+    length = 3;
+    
+    // Test sequence: 0, 1, 2
+    obs_in = 0;
     start = 1;
     #10 start = 0;
 
-    // Feed remaining observations
-    for (obs_idx = 1; obs_idx < 5; obs_idx = obs_idx + 1) begin
-      @(posedge clk);
-      obs_in = obs_seq[obs_idx];
-      obs_valid = 1;
-      @(posedge clk);
-      obs_valid = 0;
-    end
+    @(posedge clk); obs_in = 1; obs_valid = 1;
+    @(posedge clk); obs_valid = 0;
+    @(posedge clk); obs_in = 2; obs_valid = 1;
+    @(posedge clk); obs_valid = 0;
 
-    // Wait for completion
     wait(done);
     #20;
 
-    $display("Decoded state sequence: %d %d %d %d %d", 
-             path[0], path[1], path[2], path[3], path[4]);
-    $display("=== Test Complete ===");
+    $display("Result: [%d, %d, %d]", path_0, path_1, path_2);
+    
+    if (path_0 == 0 && path_1 == 1 && path_2 == 2)
+      $display("PASS: Correct result");
+    else
+      $display("FAIL: Incorrect result");
     
     #50 $finish;
   end
 
-  // Simple monitor
+  // Debug monitor
   always @(posedge clk) begin
-    if (dut.state != 0) 
-      $display("Time=%0t State=%d t=%d obs=%d done=%d", 
-               $time, dut.state, dut.t, obs_in, done);
+    if (dut.state == 1) // FORWARD
+      $display("Time=%0t t=%d obs=%d deltas=[%d,%d,%d] state=%d", 
+               $time, dut.t, obs_in, 
+               dut.delta_0, dut.delta_1, dut.delta_2, dut.state);
+    if (dut.state == 2) // BACKWARD
+      $display("Time=%0t BACKWARD back_t=%d paths=[%d,%d,%d]", 
+               $time, dut.back_t, path_0, path_1, path_2);
   end
 
-//  initial begin
-//    $dumpfile("viterbi.vcd");
-//    $dumpvars(0, tb_viterbi);
-//  end
-
 endmodule
+
