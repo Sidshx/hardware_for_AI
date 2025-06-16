@@ -1,8 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1749773063" />
-    <testcase name="test_viterbi_basic" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="94" time="0.0025298595428466797" sim_time_ns="40.001" ratio_time="15811.54974121195">
-      <failure message="Test failed with RANDOM_SEED=1749773063" />
-    </testcase>
-  </testsuite>
-</testsuites>

@@ -1,3 +1,0 @@
-[WARNING ORD-0039] .openroad ignored with -python
-line 5:2 missing Direction at 'Clock'
-An exception occurred: Syntax Error at 5:2: missing Direction at 'Clock'

@@ -1,5 +1,0 @@
-`verilator_config
-lint_off -rule DECLFILENAME
-lint_off -rule EOFNEWLINE
-lint_off -rule UNDRIVEN -file "/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-35-19/tmp/2c14f1a33b494ea7938779f04873f1ca.bb.v"
-lint_off -rule UNUSEDSIGNAL -file "/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-35-19/tmp/2c14f1a33b494ea7938779f04873f1ca.bb.v"

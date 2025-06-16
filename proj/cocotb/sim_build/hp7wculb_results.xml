@@ -1,9 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1749773422" />
-    <testcase name="test_viterbi_basic" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="153" time="0.006002664566040039" sim_time_ns="200.001" ratio_time="33318.70335242483" />
-    <testcase name="test_viterbi_simple_sequences" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="189" time="0.011082649230957031" sim_time_ns="600.001" ratio_time="54138.77020703898" />
-    <testcase name="test_viterbi_random_sequences" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="224" time="0.006125450134277344" sim_time_ns="330.001" ratio_time="53873.75503285069" />
-    <testcase name="test_viterbi_edge_cases" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="255" time="0.002149343490600586" sim_time_ns="90.00099999999998" ratio_time="41873.71650626732" />
-  </testsuite>
-</testsuites>
