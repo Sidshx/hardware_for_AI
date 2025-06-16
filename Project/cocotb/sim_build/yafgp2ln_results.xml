@@ -1,0 +1,17 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1749765512" />
+    <testcase name="test_viterbi_basic" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="113" time="0.0016834735870361328" sim_time_ns="40.001" ratio_time="23760.99055431242">
+      <failure message="Test failed with RANDOM_SEED=1749765512" />
+    </testcase>
+    <testcase name="test_viterbi_simple_sequences" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="155" time="0.0009486675262451172" sim_time_ns="50.001" ratio_time="52706.55800552903">
+      <failure message="Test failed with RANDOM_SEED=1749765512" />
+    </testcase>
+    <testcase name="test_viterbi_random_sequences" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="199" time="0.0008509159088134766" sim_time_ns="50.00099999999999" ratio_time="58761.38814906135">
+      <failure message="Test failed with RANDOM_SEED=1749765512" />
+    </testcase>
+    <testcase name="test_viterbi_edge_cases" classname="test_viterbi_cocotb" file="/home/sidsh/Documents/ECE510/hardware_for_AI/proj/cocotb/test_viterbi_cocotb.py" lineno="230" time="0.0008935928344726562" sim_time_ns="50.001000000000005" ratio_time="55955.014488794026">
+      <failure message="Test failed with RANDOM_SEED=1749765512" />
+    </testcase>
+  </testsuite>
+</testsuites>

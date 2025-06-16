@@ -1,0 +1,1990 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_pe.v
+Parsing SystemVerilog input from `/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_pe.v' to AST representation.
+Storing AST representation for module `$abstract\viterbi_pe'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v
+Parsing SystemVerilog input from `/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v' to AST representation.
+Storing AST representation for module `$abstract\viterbi_top'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+5. Executing AST frontend in derive mode using pre-parsed AST for module `\viterbi_top'.
+Generating RTLIL representation for module `\viterbi_top'.
+
+5.1. Analyzing design hierarchy..
+Top module:  \viterbi_top
+
+5.2. Analyzing design hierarchy..
+Top module:  \viterbi_top
+Removing unused module `$abstract\viterbi_top'.
+Removing unused module `$abstract\viterbi_pe'.
+Removed 2 unused modules.
+Renaming module viterbi_top to viterbi_top.
+
+6. Generating Graphviz representation of design.
+Writing dot description to `/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/06-yosys-synthesis/hierarchy.dot'.
+Dumping module viterbi_top to page 1.
+
+7. Executing TRIBUF pass.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1. Analyzing design hierarchy..
+Top module:  \viterbi_top
+
+8.2. Analyzing design hierarchy..
+Top module:  \viterbi_top
+Removed 0 unused modules.
+
+9. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2 in module viterbi_top.
+Marked 25 switch rules as full_case in process $proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2 in module viterbi_top.
+Removed a total of 1 dead cases.
+
+11. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 9 assignments to connections.
+
+12. Executing PROC_INIT pass (extract init attributes).
+
+13. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+
+14. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~28 debug messages>
+
+15. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+     1/87: $6$unnamed_block$1.new_psi_2[1:0]$103
+     2/87: $6$unnamed_block$1.new_delta_2[15:0]$102
+     3/87: $5$unnamed_block$1.new_psi_2[1:0]$98
+     4/87: $5$unnamed_block$1.new_delta_2[15:0]$97
+     5/87: $6$unnamed_block$1.new_psi_1[1:0]$91
+     6/87: $6$unnamed_block$1.new_delta_1[15:0]$90
+     7/87: $5$unnamed_block$1.new_psi_1[1:0]$86
+     8/87: $5$unnamed_block$1.new_delta_1[15:0]$85
+     9/87: $6$unnamed_block$1.new_psi_0[1:0]$79
+    10/87: $6$unnamed_block$1.new_delta_0[15:0]$78
+    11/87: $5$unnamed_block$1.new_psi_0[1:0]$74
+    12/87: $5$unnamed_block$1.new_delta_0[15:0]$73
+    13/87: $5$unnamed_block$1.emission_2[15:0]$69
+    14/87: $5$unnamed_block$1.emission_1[15:0]$68
+    15/87: $5$unnamed_block$1.emission_0[15:0]$67
+    16/87: $4$unnamed_block$1.new_delta_2[15:0]$60
+    17/87: $4$unnamed_block$1.new_psi_2[1:0]$63
+    18/87: $4$unnamed_block$1.new_delta_1[15:0]$59
+    19/87: $4$unnamed_block$1.new_psi_1[1:0]$62
+    20/87: $4$unnamed_block$1.new_delta_0[15:0]$58
+    21/87: $4$unnamed_block$1.new_psi_0[1:0]$61
+    22/87: $4$unnamed_block$1.emission_2[15:0]$66
+    23/87: $4$unnamed_block$1.emission_1[15:0]$65
+    24/87: $4$unnamed_block$1.emission_0[15:0]$64
+    25/87: $3$unnamed_block$1.emission_2[15:0]$52
+    26/87: $3$unnamed_block$1.emission_1[15:0]$51
+    27/87: $3$unnamed_block$1.emission_0[15:0]$50
+    28/87: $3$unnamed_block$1.new_psi_2[1:0]$49
+    29/87: $3$unnamed_block$1.new_psi_1[1:0]$48
+    30/87: $3$unnamed_block$1.new_psi_0[1:0]$47
+    31/87: $3$unnamed_block$1.new_delta_2[15:0]$46
+    32/87: $3$unnamed_block$1.new_delta_1[15:0]$45
+    33/87: $3$unnamed_block$1.new_delta_0[15:0]$44
+    34/87: $2$unnamed_block$1.emission_2[15:0]$30
+    35/87: $2$unnamed_block$1.emission_1[15:0]$29
+    36/87: $2$unnamed_block$1.emission_0[15:0]$28
+    37/87: $2$unnamed_block$1.new_psi_2[1:0]$27
+    38/87: $2$unnamed_block$1.new_psi_1[1:0]$26
+    39/87: $2$unnamed_block$1.new_psi_0[1:0]$25
+    40/87: $2$unnamed_block$1.new_delta_2[15:0]$24
+    41/87: $2$unnamed_block$1.new_delta_1[15:0]$23
+    42/87: $2$unnamed_block$1.new_delta_0[15:0]$22
+    43/87: $1$unnamed_block$1.emission_2[15:0]$21
+    44/87: $1$unnamed_block$1.emission_1[15:0]$20
+    45/87: $1$unnamed_block$1.emission_0[15:0]$19
+    46/87: $1$unnamed_block$1.new_psi_2[1:0]$18
+    47/87: $1$unnamed_block$1.new_psi_1[1:0]$17
+    48/87: $1$unnamed_block$1.new_psi_0[1:0]$16
+    49/87: $1$unnamed_block$1.new_delta_2[15:0]$15
+    50/87: $1$unnamed_block$1.new_delta_1[15:0]$14
+    51/87: $1$unnamed_block$1.new_delta_0[15:0]$13
+    52/87: $0\psi_7_2[1:0]
+    53/87: $0\psi_7_1[1:0]
+    54/87: $0\psi_7_0[1:0]
+    55/87: $0\psi_6_2[1:0]
+    56/87: $0\psi_6_1[1:0]
+    57/87: $0\psi_6_0[1:0]
+    58/87: $0\psi_5_2[1:0]
+    59/87: $0\psi_5_1[1:0]
+    60/87: $0\psi_5_0[1:0]
+    61/87: $0\psi_4_2[1:0]
+    62/87: $0\psi_4_1[1:0]
+    63/87: $0\psi_4_0[1:0]
+    64/87: $0\psi_3_2[1:0]
+    65/87: $0\psi_3_1[1:0]
+    66/87: $0\psi_3_0[1:0]
+    67/87: $0\psi_2_2[1:0]
+    68/87: $0\psi_2_1[1:0]
+    69/87: $0\psi_2_0[1:0]
+    70/87: $0\psi_1_2[1:0]
+    71/87: $0\psi_1_1[1:0]
+    72/87: $0\psi_1_0[1:0]
+    73/87: $0\delta_2[15:0]
+    74/87: $0\delta_1[15:0]
+    75/87: $0\delta_0[15:0]
+    76/87: $0\back_t[2:0]
+    77/87: $0\t[2:0]
+    78/87: $0\state[1:0]
+    79/87: $0\done[0:0]
+    80/87: $0\path_7[1:0]
+    81/87: $0\path_6[1:0]
+    82/87: $0\path_5[1:0]
+    83/87: $0\path_4[1:0]
+    84/87: $0\path_3[1:0]
+    85/87: $0\path_2[1:0]
+    86/87: $0\path_1[1:0]
+    87/87: $0\path_0[1:0]
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+17. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\viterbi_top.\path_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1275' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1280' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1285' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_3' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1290' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_4' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1295' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_5' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1300' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_6' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1305' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\path_7' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1310' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\done' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1315' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\state' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1320' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\t' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1325' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\back_t' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1330' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\delta_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1335' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\delta_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1340' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\delta_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1345' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_1_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1350' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_1_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1355' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_1_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1360' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_2_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1365' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_2_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1370' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_2_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1375' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_3_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1380' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_3_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1385' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_3_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1390' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_4_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1395' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_4_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1400' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_4_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1405' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_5_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1410' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_5_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1415' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_5_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1420' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_6_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1425' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_6_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1430' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_6_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1435' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_7_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1440' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_7_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1445' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.\psi_7_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $adff cell `$procdff$1450' with positive edge clock and positive level reset.
+Creating register for signal `\viterbi_top.$unnamed_block$1.new_delta_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1457' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.new_delta_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1464' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.new_delta_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1471' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.new_psi_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1478' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.new_psi_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1485' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.new_psi_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1492' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.emission_0' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1499' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.emission_1' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1506' with positive edge clock.
+Creating register for signal `\viterbi_top.$unnamed_block$1.emission_2' using process `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+  created $dff cell `$procdff$1513' with positive edge clock.
+
+18. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+19. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 28 empty switches in `\viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+Removing empty process `viterbi_top.$proc$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:62$2'.
+Cleaned up 28 empty switches.
+
+20. Executing CHECK pass (checking for obvious problems).
+Checking module viterbi_top...
+Found and reported 0 problems.
+
+21. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~119 debug messages>
+
+22. Executing FLATTEN pass (flatten design).
+
+23. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 173 unused cells and 477 unused wires.
+<suppressed ~174 debug messages>
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+<suppressed ~405 debug messages>
+Removed a total of 135 cells.
+
+27. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$116.
+    dead port 1/2 on $mux $procmux$119.
+    dead port 2/2 on $mux $procmux$121.
+    dead port 2/2 on $mux $procmux$142.
+    dead port 1/2 on $mux $procmux$145.
+    dead port 2/2 on $mux $procmux$147.
+    dead port 2/2 on $mux $procmux$168.
+    dead port 1/2 on $mux $procmux$171.
+    dead port 2/2 on $mux $procmux$173.
+    dead port 2/2 on $mux $procmux$194.
+    dead port 1/2 on $mux $procmux$197.
+    dead port 2/2 on $mux $procmux$199.
+    dead port 2/2 on $mux $procmux$220.
+    dead port 1/2 on $mux $procmux$223.
+    dead port 2/2 on $mux $procmux$225.
+    dead port 2/2 on $mux $procmux$246.
+    dead port 1/2 on $mux $procmux$249.
+    dead port 2/2 on $mux $procmux$251.
+Removed 18 multiplexer ports.
+<suppressed ~48 debug messages>
+
+28. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+    New ctrl vector for $pmux cell $procmux$832: { $procmux$272_CMP $procmux$271_CMP }
+    New ctrl vector for $pmux cell $procmux$850: { $procmux$272_CMP $procmux$271_CMP }
+    New ctrl vector for $pmux cell $procmux$868: { $procmux$272_CMP $procmux$271_CMP }
+    New ctrl vector for $pmux cell $procmux$927: $auto$opt_reduce.cc:134:opt_pmux$1515
+    New ctrl vector for $pmux cell $procmux$937: $auto$opt_reduce.cc:134:opt_pmux$1517
+    New ctrl vector for $pmux cell $procmux$949: $auto$opt_reduce.cc:134:opt_pmux$1519
+  Optimizing cells in module \viterbi_top.
+Performed a total of 6 changes.
+
+29. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+30. Executing OPT_DFF pass (perform DFF optimizations).
+
+31. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 1 unused cells and 156 unused wires.
+<suppressed ~2 debug messages>
+
+32. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+33. Rerunning OPT passes. (Maybe there is more to do…)
+
+34. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~48 debug messages>
+
+35. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+36. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+37. Executing OPT_DFF pass (perform DFF optimizations).
+
+38. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+39. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+40. Executing FSM pass (extract and optimize FSM).
+
+40.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking viterbi_top.path_7 as FSM state register:
+    Register is connected to module port.
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_1_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_1_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_1_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_2_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_2_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_2_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_3_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_3_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_3_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_4_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_4_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_4_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_5_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_5_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_5_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_6_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_6_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_6_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_7_0 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_7_1 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking viterbi_top.psi_7_2 as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Found FSM state register viterbi_top.state.
+
+40.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\viterbi_top'.
+  found $adff cell for state register: $procdff$1320
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'00 (from async reset)
+  found ctrl input: $procmux$878_CMP
+  found ctrl input: $procmux$1008_CMP
+  found ctrl input: $procmux$1030_CMP
+  found ctrl input: $procmux$838_CMP
+  found ctrl input: \start
+  found ctrl input: $eq$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:252$107_Y
+  found state code: 2'11
+  found ctrl input: $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:116$43_Y
+  found state code: 2'10
+  found state code: 2'01
+  found ctrl output: $procmux$838_CMP
+  found ctrl output: $procmux$878_CMP
+  found ctrl output: $procmux$1008_CMP
+  found ctrl output: $procmux$1030_CMP
+  ctrl inputs: { $eq$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:252$107_Y $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:116$43_Y \start }
+  ctrl outputs: { $procmux$1030_CMP $procmux$1008_CMP $procmux$878_CMP $procmux$838_CMP $0\state[1:0] }
+  transition:       2'00 3'--0 ->       2'00 6'000100
+  transition:       2'00 3'--1 ->       2'01 6'000101
+  transition:       2'10 3'0-- ->       2'10 6'010010
+  transition:       2'10 3'1-- ->       2'11 6'010011
+  transition:       2'01 3'-0- ->       2'01 6'100001
+  transition:       2'01 3'-1- ->       2'10 6'100010
+  transition:       2'11 3'--0 ->       2'00 6'001000
+  transition:       2'11 3'--1 ->       2'11 6'001011
+
+40.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$1520' from module `\viterbi_top'.
+
+40.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 10 unused cells and 10 unused wires.
+<suppressed ~11 debug messages>
+
+40.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$1520' from module `\viterbi_top'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+
+40.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$1520' from module `\viterbi_top' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> ---1
+  10 -> --1-
+  01 -> -1--
+  11 -> 1---
+
+40.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$1520' from module `viterbi_top':
+-------------------------------------
+
+  Information on FSM $fsm$\state$1520 (\state):
+
+  Number of input signals:    3
+  Number of output signals:   4
+  Number of state bits:       4
+
+  Input signals:
+    0: \start
+    1: $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:116$43_Y
+    2: $eq$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:252$107_Y
+
+  Output signals:
+    0: $procmux$838_CMP
+    1: $procmux$878_CMP
+    2: $procmux$1008_CMP
+    3: $procmux$1030_CMP
+
+  State encoding:
+    0:     4'---1  <RESET STATE>
+    1:     4'--1-
+    2:     4'-1--
+    3:     4'1---
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 3'--0   ->     0 4'0001
+      1:     0 3'--1   ->     2 4'0001
+      2:     1 3'0--   ->     1 4'0100
+      3:     1 3'1--   ->     3 4'0100
+      4:     2 3'-1-   ->     1 4'1000
+      5:     2 3'-0-   ->     2 4'1000
+      6:     3 3'--0   ->     0 4'0010
+      7:     3 3'--1   ->     3 4'0010
+
+-------------------------------------
+
+40.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$1520' from module `\viterbi_top'.
+
+41. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~7 debug messages>
+
+42. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+43. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~47 debug messages>
+
+44. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+45. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+46. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$1450 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_7_2).
+Adding EN signal on $procdff$1445 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_7_1).
+Adding EN signal on $procdff$1440 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_7_0).
+Adding EN signal on $procdff$1435 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_6_2).
+Adding EN signal on $procdff$1430 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_6_1).
+Adding EN signal on $procdff$1425 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_6_0).
+Adding EN signal on $procdff$1420 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_5_2).
+Adding EN signal on $procdff$1415 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_5_1).
+Adding EN signal on $procdff$1410 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_5_0).
+Adding EN signal on $procdff$1405 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_4_2).
+Adding EN signal on $procdff$1400 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_4_1).
+Adding EN signal on $procdff$1395 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_4_0).
+Adding EN signal on $procdff$1390 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_3_2).
+Adding EN signal on $procdff$1385 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_3_1).
+Adding EN signal on $procdff$1380 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_3_0).
+Adding EN signal on $procdff$1375 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_2_2).
+Adding EN signal on $procdff$1370 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_2_1).
+Adding EN signal on $procdff$1365 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_2_0).
+Adding EN signal on $procdff$1360 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_2[1:0]$103, Q = \psi_1_2).
+Adding EN signal on $procdff$1355 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_1[1:0]$91, Q = \psi_1_1).
+Adding EN signal on $procdff$1350 ($adff) from module viterbi_top (D = $6$unnamed_block$1.new_psi_0[1:0]$79, Q = \psi_1_0).
+Adding EN signal on $procdff$1345 ($adff) from module viterbi_top (D = $0\delta_2[15:0], Q = \delta_2).
+Adding EN signal on $procdff$1340 ($adff) from module viterbi_top (D = $0\delta_1[15:0], Q = \delta_1).
+Adding EN signal on $procdff$1335 ($adff) from module viterbi_top (D = $0\delta_0[15:0], Q = \delta_0).
+Adding EN signal on $procdff$1330 ($adff) from module viterbi_top (D = $0\back_t[2:0], Q = \back_t).
+Adding EN signal on $procdff$1325 ($adff) from module viterbi_top (D = $0\t[2:0], Q = \t).
+Adding EN signal on $procdff$1315 ($adff) from module viterbi_top (D = $0\done[0:0], Q = \done).
+Adding EN signal on $procdff$1310 ($adff) from module viterbi_top (D = $procmux$957_Y, Q = \path_7).
+Adding EN signal on $procdff$1305 ($adff) from module viterbi_top (D = $0\path_6[1:0], Q = \path_6).
+Adding EN signal on $procdff$1300 ($adff) from module viterbi_top (D = $0\path_5[1:0], Q = \path_5).
+Adding EN signal on $procdff$1295 ($adff) from module viterbi_top (D = $0\path_4[1:0], Q = \path_4).
+Adding EN signal on $procdff$1290 ($adff) from module viterbi_top (D = $0\path_3[1:0], Q = \path_3).
+Adding EN signal on $procdff$1285 ($adff) from module viterbi_top (D = $0\path_2[1:0], Q = \path_2).
+Adding EN signal on $procdff$1280 ($adff) from module viterbi_top (D = $0\path_1[1:0], Q = \path_1).
+Adding EN signal on $procdff$1275 ($adff) from module viterbi_top (D = $0\path_0[1:0], Q = \path_0).
+
+47. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 86 unused cells and 97 unused wires.
+<suppressed ~87 debug messages>
+
+48. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~13 debug messages>
+
+49. Rerunning OPT passes. (Maybe there is more to do…)
+
+50. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+51. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+52. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+<suppressed ~210 debug messages>
+Removed a total of 70 cells.
+
+53. Executing OPT_DFF pass (perform DFF optimizations).
+
+54. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 70 unused wires.
+<suppressed ~1 debug messages>
+
+55. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+56. Rerunning OPT passes. (Maybe there is more to do…)
+
+57. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+58. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+59. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+60. Executing OPT_DFF pass (perform DFF optimizations).
+
+61. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+62. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+63. Executing WREDUCE pass (reducing word size of cells).
+Removed top 31 bits (of 32) from port B of cell viterbi_top.$sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:153$57 ($sub).
+Removed top 29 bits (of 32) from port Y of cell viterbi_top.$sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:153$57 ($sub).
+Removed top 31 bits (of 32) from port B of cell viterbi_top.$add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:247$106 ($add).
+Removed top 29 bits (of 32) from port Y of cell viterbi_top.$add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:247$106 ($add).
+Removed top 31 bits (of 32) from port B of cell viterbi_top.$sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:315$108 ($sub).
+Removed top 29 bits (of 32) from port Y of cell viterbi_top.$sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:315$108 ($sub).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1851 ($ne).
+Removed top 1 bits (of 2) from mux cell viterbi_top.$procmux$140 ($mux).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1849 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1847 ($ne).
+Removed top 1 bits (of 2) from mux cell viterbi_top.$procmux$192 ($mux).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1729 ($ne).
+Removed top 1 bits (of 2) from mux cell viterbi_top.$procmux$244 ($mux).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$272_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1838 ($ne).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1834 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1832 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1830 ($ne).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1821 ($ne).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1817 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1815 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1813 ($ne).
+Removed top 1 bits (of 3) from port B of cell viterbi_top.$procmux$676_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell viterbi_top.$procmux$725_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1804 ($ne).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$procmux$777_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1800 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1798 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1796 ($ne).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1787 ($ne).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1783 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1781 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1779 ($ne).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1770 ($ne).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1766 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1764 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1762 ($ne).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1753 ($ne).
+Removed top 1 bits (of 4) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1749 ($ne).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$967_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1747 ($ne).
+Removed top 1 bits (of 5) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1745 ($ne).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$1000_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$1037_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$1078_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$1123_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell viterbi_top.$procmux$1126_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell viterbi_top.$procmux$1139_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$1172_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell viterbi_top.$procmux$1175_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell viterbi_top.$procmux$1189_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell viterbi_top.$procmux$1225_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$procmux$1228_CMP0 ($eq).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$auto$opt_dff.cc:195:make_patterns_logic$1855 ($ne).
+Removed top 2 bits (of 3) from port B of cell viterbi_top.$procmux$1243_CMP0 ($eq).
+Removed top 1 bits (of 2) from wire viterbi_top.$5$unnamed_block$1.new_psi_0[1:0]$74.
+Removed top 1 bits (of 2) from wire viterbi_top.$5$unnamed_block$1.new_psi_1[1:0]$86.
+Removed top 1 bits (of 2) from wire viterbi_top.$5$unnamed_block$1.new_psi_2[1:0]$98.
+Removed top 29 bits (of 32) from wire viterbi_top.$add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:247$106_Y.
+Removed top 29 bits (of 32) from wire viterbi_top.$sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:153$57_Y.
+
+64. Executing PEEPOPT pass (run peephole optimizers).
+
+65. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~1 debug messages>
+
+66. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module viterbi_top:
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:100$37 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:101$38 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:102$39 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:105$40 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:106$41 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:107$42 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:179$70 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:181$71 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:185$76 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:189$81 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:192$82 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:194$83 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:198$88 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:202$93 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:205$94 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:207$95 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:211$100 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:215$105 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:247$106 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:95$34 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:96$35 ($add).
+  creating $macc model for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:97$36 ($add).
+  creating $macc model for $sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:153$57 ($sub).
+  creating $macc model for $sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:315$108 ($sub).
+  creating $alu model for $macc $sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:315$108.
+  creating $alu model for $macc $sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:153$57.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:97$36.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:96$35.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:95$34.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:247$106.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:215$105.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:211$100.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:207$95.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:205$94.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:202$93.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:198$88.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:194$83.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:192$82.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:189$81.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:185$76.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:181$71.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:179$70.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:107$42.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:106$41.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:105$40.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:102$39.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:101$38.
+  creating $alu model for $macc $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:100$37.
+  creating $alu model for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:116$43 ($ge): new $alu
+  creating $alu model for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:118$53 ($ge): new $alu
+  creating $alu model for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:118$54 ($ge): new $alu
+  creating $alu model for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:129$56 ($ge): new $alu
+  creating $alu model for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:181$72 ($gt): new $alu
+  creating $alu model for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:185$77 ($gt): new $alu
+  creating $alu model for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:194$84 ($gt): new $alu
+  creating $alu model for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:198$89 ($gt): new $alu
+  creating $alu model for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:207$96 ($gt): new $alu
+  creating $alu model for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:211$101 ($gt): new $alu
+  creating $alu cell for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:211$101: $auto$alumacc.cc:485:replace_alu$1875
+  creating $alu cell for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:207$96: $auto$alumacc.cc:485:replace_alu$1888
+  creating $alu cell for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:198$89: $auto$alumacc.cc:485:replace_alu$1895
+  creating $alu cell for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:194$84: $auto$alumacc.cc:485:replace_alu$1902
+  creating $alu cell for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:185$77: $auto$alumacc.cc:485:replace_alu$1915
+  creating $alu cell for $gt$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:181$72: $auto$alumacc.cc:485:replace_alu$1922
+  creating $alu cell for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:129$56: $auto$alumacc.cc:485:replace_alu$1929
+  creating $alu cell for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:118$54: $auto$alumacc.cc:485:replace_alu$1940
+  creating $alu cell for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:118$53: $auto$alumacc.cc:485:replace_alu$1955
+  creating $alu cell for $ge$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:116$43: $auto$alumacc.cc:485:replace_alu$1970
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:100$37: $auto$alumacc.cc:485:replace_alu$1983
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:101$38: $auto$alumacc.cc:485:replace_alu$1986
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:102$39: $auto$alumacc.cc:485:replace_alu$1989
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:105$40: $auto$alumacc.cc:485:replace_alu$1992
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:106$41: $auto$alumacc.cc:485:replace_alu$1995
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:107$42: $auto$alumacc.cc:485:replace_alu$1998
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:179$70: $auto$alumacc.cc:485:replace_alu$2001
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:181$71: $auto$alumacc.cc:485:replace_alu$2004
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:185$76: $auto$alumacc.cc:485:replace_alu$2007
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:189$81: $auto$alumacc.cc:485:replace_alu$2010
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:192$82: $auto$alumacc.cc:485:replace_alu$2013
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:194$83: $auto$alumacc.cc:485:replace_alu$2016
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:198$88: $auto$alumacc.cc:485:replace_alu$2019
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:202$93: $auto$alumacc.cc:485:replace_alu$2022
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:205$94: $auto$alumacc.cc:485:replace_alu$2025
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:207$95: $auto$alumacc.cc:485:replace_alu$2028
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:211$100: $auto$alumacc.cc:485:replace_alu$2031
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:215$105: $auto$alumacc.cc:485:replace_alu$2034
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:247$106: $auto$alumacc.cc:485:replace_alu$2037
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:95$34: $auto$alumacc.cc:485:replace_alu$2040
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:96$35: $auto$alumacc.cc:485:replace_alu$2043
+  creating $alu cell for $add$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:97$36: $auto$alumacc.cc:485:replace_alu$2046
+  creating $alu cell for $sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:153$57: $auto$alumacc.cc:485:replace_alu$2049
+  creating $alu cell for $sub$/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/src/viterbi_top.v:315$108: $auto$alumacc.cc:485:replace_alu$2052
+  created 34 $alu and 0 $macc cells.
+
+67. Executing SHARE pass (SAT-based resource sharing).
+
+68. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~4 debug messages>
+
+69. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+70. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+71. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+72. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+73. Executing OPT_DFF pass (perform DFF optimizations).
+
+74. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 2 unused cells and 12 unused wires.
+<suppressed ~3 debug messages>
+
+75. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+76. Rerunning OPT passes. (Maybe there is more to do…)
+
+77. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+78. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+79. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+80. Executing OPT_DFF pass (perform DFF optimizations).
+
+81. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+82. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+83. Executing MEMORY pass.
+
+83.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+83.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+83.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+83.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+83.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+83.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+83.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+83.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+83.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+83.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+84. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+85. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~106 debug messages>
+
+86. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+<suppressed ~42 debug messages>
+Removed a total of 14 cells.
+
+87. Executing OPT_DFF pass (perform DFF optimizations).
+
+88. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 105 unused wires.
+<suppressed ~1 debug messages>
+
+89. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+90. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+91. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+92. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+93. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+94. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+95. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$832 in front of them:
+        $auto$alumacc.cc:485:replace_alu$1989
+        $auto$alumacc.cc:485:replace_alu$2046
+        $auto$alumacc.cc:485:replace_alu$1998
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$850 in front of them:
+        $auto$alumacc.cc:485:replace_alu$1986
+        $auto$alumacc.cc:485:replace_alu$2043
+        $auto$alumacc.cc:485:replace_alu$1995
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$868 in front of them:
+        $auto$alumacc.cc:485:replace_alu$1983
+        $auto$alumacc.cc:485:replace_alu$2040
+        $auto$alumacc.cc:485:replace_alu$1992
+
+    Found cells that share an operand and can be merged by moving the $pmux $procmux$877 in front of them:
+        $auto$alumacc.cc:485:replace_alu$2052
+        $auto$alumacc.cc:485:replace_alu$2049
+
+96. Executing OPT_DFF pass (perform DFF optimizations).
+
+97. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 33 unused wires.
+<suppressed ~1 debug messages>
+
+98. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+99. Rerunning OPT passes. (Maybe there is more to do…)
+
+100. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+101. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+    Consolidated identical input bits for $pmux cell $procmux$832:
+      Old ports: A=$auto$opt_share.cc:222:merge_operators$2055, B={ $auto$opt_share.cc:222:merge_operators$2055 $auto$opt_share.cc:222:merge_operators$2055 }, Y=$procmux$832_Y
+      New connections: $procmux$832_Y = $auto$opt_share.cc:222:merge_operators$2055
+    Consolidated identical input bits for $pmux cell $procmux$850:
+      Old ports: A=$auto$opt_share.cc:222:merge_operators$2060, B={ $auto$opt_share.cc:222:merge_operators$2060 $auto$opt_share.cc:222:merge_operators$2060 }, Y=$procmux$850_Y
+      New connections: $procmux$850_Y = $auto$opt_share.cc:222:merge_operators$2060
+    Consolidated identical input bits for $pmux cell $procmux$868:
+      Old ports: A=$auto$opt_share.cc:222:merge_operators$2065, B={ $auto$opt_share.cc:222:merge_operators$2065 $auto$opt_share.cc:222:merge_operators$2065 }, Y=$procmux$868_Y
+      New connections: $procmux$868_Y = $auto$opt_share.cc:222:merge_operators$2065
+    New ctrl vector for $pmux cell $procmux$877: \state [3]
+  Optimizing cells in module \viterbi_top.
+Performed a total of 4 changes.
+
+102. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+103. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $procmux$829 in front of them:
+        $auto$alumacc.cc:485:replace_alu$2034
+        $auto$alumacc.cc:485:replace_alu$1989
+
+    Found cells that share an operand and can be merged by moving the $mux $procmux$847 in front of them:
+        $auto$alumacc.cc:485:replace_alu$2022
+        $auto$alumacc.cc:485:replace_alu$1986
+
+    Found cells that share an operand and can be merged by moving the $mux $procmux$865 in front of them:
+        $auto$alumacc.cc:485:replace_alu$2010
+        $auto$alumacc.cc:485:replace_alu$1983
+
+104. Executing OPT_DFF pass (perform DFF optimizations).
+
+105. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 24 unused wires.
+<suppressed ~1 debug messages>
+
+106. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~3 debug messages>
+
+107. Rerunning OPT passes. (Maybe there is more to do…)
+
+108. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~23 debug messages>
+
+109. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+110. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+111. Executing OPT_SHARE pass.
+
+112. Executing OPT_DFF pass (perform DFF optimizations).
+
+113. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+114. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+115. Rerunning OPT passes. (Maybe there is more to do…)
+
+116. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~23 debug messages>
+
+117. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+118. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+119. Executing OPT_SHARE pass.
+
+120. Executing OPT_DFF pass (perform DFF optimizations).
+
+121. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+122. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+123. Executing TECHMAP pass (map to technology primitives).
+
+123.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+123.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod$0d149ffe75563ef6fcc1a3dddc59d00af28651a7\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$d4c0c20b0ee59f495e14575c4397dc0a6dd9e8e6\_90_alu for cells of type $alu.
+Using template $paramod$78e969f2586efcf3a5b0b0440bcca0db83d5cca2\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$b8c0a997bce700f23568a5ada79cc6781d1f5ca0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$32e7c4d6f92ff4337599ece53082d2e88a82a9f2\_90_pmux for cells of type $pmux.
+Using template $paramod$97565c3687be688407d1272a293bd9d0ae6852dc\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~2363 debug messages>
+
+124. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~696 debug messages>
+
+125. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+<suppressed ~762 debug messages>
+Removed a total of 254 cells.
+
+126. Executing OPT_DFF pass (perform DFF optimizations).
+
+127. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 621 unused cells and 1504 unused wires.
+<suppressed ~622 debug messages>
+
+128. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+129. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+130. Executing OPT_DFF pass (perform DFF optimizations).
+
+131. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+132. Executing ABC pass (technology mapping using ABC).
+
+132.1. Extracting gate netlist of module `\viterbi_top' to `<abc-temp-dir>/input.blif'..
+Extracted 2853 gates and 3312 wires to a netlist network with 457 inputs and 99 outputs.
+
+132.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+132.1.2. Re-integrating ABC results.
+ABC RESULTS:              NAND cells:      166
+ABC RESULTS:               AND cells:       35
+ABC RESULTS:             ORNOT cells:      182
+ABC RESULTS:              XNOR cells:      228
+ABC RESULTS:               NOT cells:      209
+ABC RESULTS:               MUX cells:      212
+ABC RESULTS:                OR cells:      171
+ABC RESULTS:               NOR cells:      181
+ABC RESULTS:            ANDNOT cells:     1054
+ABC RESULTS:               XOR cells:      300
+ABC RESULTS:        internal signals:     2756
+ABC RESULTS:           input signals:      457
+ABC RESULTS:          output signals:       99
+Removing temp directory.
+
+133. Executing OPT pass (performing simple optimizations).
+
+133.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+<suppressed ~65 debug messages>
+
+133.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+133.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+133.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 1748 unused wires.
+<suppressed ~1 debug messages>
+
+133.5. Finished fast OPT passes.
+
+134. Executing HIERARCHY pass (managing design hierarchy).
+
+134.1. Analyzing design hierarchy..
+Top module:  \viterbi_top
+
+134.2. Analyzing design hierarchy..
+Top module:  \viterbi_top
+Removed 0 unused modules.
+
+135. Executing CHECK pass (checking for obvious problems).
+Checking module viterbi_top...
+Found and reported 0 problems.
+
+136. Printing statistics.
+
+=== viterbi_top ===
+
+   Number of wires:               2745
+   Number of wire bits:           3248
+   Number of public wires:          63
+   Number of public wire bits:     462
+   Number of ports:                 36
+   Number of port bits:            362
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2855
+     $_ANDNOT_                    1054
+     $_AND_                         35
+     $_DFFE_PN0P_                  113
+     $_DFF_PN0_                      3
+     $_DFF_PN1_                      1
+     $_MUX_                        212
+     $_NAND_                       166
+     $_NOR_                        181
+     $_NOT_                        209
+     $_ORNOT_                      182
+     $_OR_                         171
+     $_XNOR_                       228
+     $_XOR_                        300
+
+137. Generating Graphviz representation of design.
+Writing dot description to `/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module viterbi_top to page 1.
+
+138. Executing OPT pass (performing simple optimizations).
+
+138.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+138.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+138.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \viterbi_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+138.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \viterbi_top.
+Performed a total of 0 changes.
+
+138.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\viterbi_top'.
+Removed a total of 0 cells.
+
+138.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+138.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+
+138.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module viterbi_top.
+
+138.9. Finished OPT passes. (There is nothing left to do.)
+
+139. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/tmp/979a8bb228eb4079a991b3d7fd9b17fb.lib ",
+   "modules": {
+      "\\viterbi_top": {
+         "num_wires":         2745,
+         "num_wire_bits":     3248,
+         "num_pub_wires":     63,
+         "num_pub_wire_bits": 462,
+         "num_ports":         36,
+         "num_port_bits":     362,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2855,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1054,
+            "$_AND_": 35,
+            "$_DFFE_PN0P_": 113,
+            "$_DFF_PN0_": 3,
+            "$_DFF_PN1_": 1,
+            "$_MUX_": 212,
+            "$_NAND_": 166,
+            "$_NOR_": 181,
+            "$_NOT_": 209,
+            "$_ORNOT_": 182,
+            "$_OR_": 171,
+            "$_XNOR_": 228,
+            "$_XOR_": 300
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2745,
+         "num_wire_bits":     3248,
+         "num_pub_wires":     63,
+         "num_pub_wire_bits": 462,
+         "num_ports":         36,
+         "num_port_bits":     362,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2855,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1054,
+            "$_AND_": 35,
+            "$_DFFE_PN0P_": 113,
+            "$_DFF_PN0_": 3,
+            "$_DFF_PN1_": 1,
+            "$_MUX_": 212,
+            "$_NAND_": 166,
+            "$_NOR_": 181,
+            "$_NOT_": 209,
+            "$_ORNOT_": 182,
+            "$_OR_": 171,
+            "$_XNOR_": 228,
+            "$_XOR_": 300
+         }
+      }
+}
+
+140. Printing statistics.
+
+=== viterbi_top ===
+
+   Number of wires:               2745
+   Number of wire bits:           3248
+   Number of public wires:          63
+   Number of public wire bits:     462
+   Number of ports:                 36
+   Number of port bits:            362
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2855
+     $_ANDNOT_                    1054
+     $_AND_                         35
+     $_DFFE_PN0P_                  113
+     $_DFF_PN0_                      3
+     $_DFF_PN1_                      1
+     $_MUX_                        212
+     $_NAND_                       166
+     $_NOR_                        181
+     $_NOT_                        209
+     $_ORNOT_                      182
+     $_OR_                         171
+     $_XNOR_                       228
+     $_XOR_                        300
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_DFF_PN0_ is unknown!
+   Area for cell type $_DFF_PN1_ is unknown!
+   Area for cell type $_DFFE_PN0P_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+141. Executing TECHMAP pass (map to technology primitives).
+
+141.1. Executing Verilog-2005 frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+141.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+142. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+143. Executing TECHMAP pass (map to technology primitives).
+
+143.1. Executing Verilog-2005 frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+143.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+144. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+145. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+145.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\viterbi_top':
+  mapped 116 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_2 cells.
+  mapped 1 $_DFF_PN1_ cells to \sky130_fd_sc_hd__dfstp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/tmp/979a8bb228eb4079a991b3d7fd9b17fb.lib ",
+   "modules": {
+      "\\viterbi_top": {
+         "num_wires":         2858,
+         "num_wire_bits":     3361,
+         "num_pub_wires":     63,
+         "num_pub_wire_bits": 462,
+         "num_ports":         36,
+         "num_port_bits":     362,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2968,
+         "area":              3074.198400,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1054,
+            "$_AND_": 35,
+            "$_MUX_": 325,
+            "$_NAND_": 166,
+            "$_NOR_": 181,
+            "$_NOT_": 209,
+            "$_ORNOT_": 182,
+            "$_OR_": 171,
+            "$_XNOR_": 228,
+            "$_XOR_": 300,
+            "sky130_fd_sc_hd__dfrtp_2": 116,
+            "sky130_fd_sc_hd__dfstp_2": 1
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2858,
+         "num_wire_bits":     3361,
+         "num_pub_wires":     63,
+         "num_pub_wire_bits": 462,
+         "num_ports":         36,
+         "num_port_bits":     362,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2968,
+         "area":              3074.198400,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1054,
+            "$_AND_": 35,
+            "$_MUX_": 325,
+            "$_NAND_": 166,
+            "$_NOR_": 181,
+            "$_NOT_": 209,
+            "$_ORNOT_": 182,
+            "$_OR_": 171,
+            "$_XNOR_": 228,
+            "$_XOR_": 300,
+            "sky130_fd_sc_hd__dfrtp_2": 116,
+            "sky130_fd_sc_hd__dfstp_2": 1
+         }
+      }
+}
+
+146. Printing statistics.
+
+=== viterbi_top ===
+
+   Number of wires:               2858
+   Number of wire bits:           3361
+   Number of public wires:          63
+   Number of public wire bits:     462
+   Number of ports:                 36
+   Number of port bits:            362
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2968
+     $_ANDNOT_                    1054
+     $_AND_                         35
+     $_MUX_                        325
+     $_NAND_                       166
+     $_NOR_                        181
+     $_NOT_                        209
+     $_ORNOT_                      182
+     $_OR_                         171
+     $_XNOR_                       228
+     $_XOR_                        300
+     sky130_fd_sc_hd__dfrtp_2      116
+     sky130_fd_sc_hd__dfstp_2        1
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\viterbi_top': 3074.198400
+     of which used for sequential elements: 3074.198400 (100.00%)
+
+[INFO] Using generated ABC script '/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/06-yosys-synthesis/AREA_0.abc'…
+
+147. Executing ABC pass (technology mapping using ABC).
+
+147.1. Extracting gate netlist of module `\viterbi_top' to `/tmp/yosys-abc-St7qI3/input.blif'..
+Extracted 2851 gates and 3311 wires to a netlist network with 460 inputs and 117 outputs.
+
+147.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-St7qI3/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-St7qI3/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-St7qI3/input.blif 
+ABC: + read_lib -w /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/tmp/979a8bb228eb4079a991b3d7fd9b17fb.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.03 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/tmp/979a8bb228eb4079a991b3d7fd9b17fb.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.05 sec
+ABC: Memory =    9.54 MB. Time =     0.05 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =   2040 (  6.4 %)   Cap =  8.7 ff (  3.2 %)   Area =    18526.52 ( 85.4 %)   Delay =  9043.39 ps  (  4.3 %)               
+ABC: Path  0 --     136 : 0    9 pi                         A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  38.7 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     933 : 2    2 sky130_fd_sc_hd__xor2_2    A =  16.27  Df = 183.0  -14.4 ps  S = 181.8 ps  Cin =  8.6 ff  Cout =  10.9 ff  Cmax = 130.0 ff  G =  124  
+ABC: Path  2 --     934 : 4    3 sky130_fd_sc_hd__a31o_2    A =   8.76  Df = 449.8  -41.5 ps  S =  98.5 ps  Cin =  2.4 ff  Cout =  14.3 ff  Cmax = 271.9 ff  G =  581  
+ABC: Path  3 --     938 : 5    3 sky130_fd_sc_hd__a221o_2   A =  11.26  Df = 805.2 -225.7 ps  S =  69.2 ps  Cin =  2.3 ff  Cout =   8.6 ff  Cmax = 299.4 ff  G =  354  
+ABC: Path  4 --     942 : 4    3 sky130_fd_sc_hd__or4bb_2   A =  12.51  Df =1221.2 -203.3 ps  S = 120.8 ps  Cin =  1.5 ff  Cout =   9.5 ff  Cmax = 312.2 ff  G =  614  
+ABC: Path  5 --     957 : 4    4 sky130_fd_sc_hd__a211o_2   A =  10.01  Df =1577.9 -401.3 ps  S =  80.5 ps  Cin =  2.4 ff  Cout =  14.2 ff  Cmax = 325.0 ff  G =  577  
+ABC: Path  6 --     963 : 4    3 sky130_fd_sc_hd__o211a_2   A =  10.01  Df =1834.5 -474.3 ps  S =  62.4 ps  Cin =  2.4 ff  Cout =   6.5 ff  Cmax = 268.3 ff  G =  262  
+ABC: Path  7 --     972 : 5    2 sky130_fd_sc_hd__o311a_2   A =  11.26  Df =2236.2 -683.8 ps  S =  65.9 ps  Cin =  2.4 ff  Cout =   7.2 ff  Cmax = 293.9 ff  G =  287  
+ABC: Path  8 --     975 : 4    1 sky130_fd_sc_hd__o31a_2    A =  10.01  Df =2543.8 -848.8 ps  S =  67.5 ps  Cin =  2.3 ff  Cout =   9.0 ff  Cmax = 285.7 ff  G =  369  
+ABC: Path  9 --     977 : 2    3 sky130_fd_sc_hd__xnor2_2   A =  16.27  Df =2710.0 -873.3 ps  S = 133.1 ps  Cin =  8.5 ff  Cout =   5.6 ff  Cmax = 121.8 ff  G =   63  
+ABC: Path 10 --    1044 : 3    3 sky130_fd_sc_hd__a21boi_2  A =  11.26  Df =2922.9 -919.8 ps  S = 143.3 ps  Cin =  3.6 ff  Cout =   8.8 ff  Cmax = 129.1 ff  G =  230  
+ABC: Path 11 --    1052 : 4    3 sky130_fd_sc_hd__and4b_2   A =  11.26  Df =3177.5  -17.8 ps  S =  75.3 ps  Cin =  1.6 ff  Cout =   7.4 ff  Cmax = 297.6 ff  G =  453  
+ABC: Path 12 --    1150 : 4    4 sky130_fd_sc_hd__a211o_2   A =  10.01  Df =3493.7 -184.4 ps  S =  67.0 ps  Cin =  2.4 ff  Cout =  10.2 ff  Cmax = 325.0 ff  G =  415  
+ABC: Path 13 --    1151 : 2    3 sky130_fd_sc_hd__and2_2    A =   7.51  Df =3710.3 -234.8 ps  S =  73.7 ps  Cin =  1.5 ff  Cout =  10.6 ff  Cmax = 303.0 ff  G =  698  
+ABC: Path 14 --    1191 : 3    3 sky130_fd_sc_hd__mux2_1    A =  11.26  Df =4055.6 -340.0 ps  S =  90.9 ps  Cin =  2.3 ff  Cout =   8.5 ff  Cmax = 173.0 ff  G =  351  
+ABC: Path 15 --    1192 : 4    2 sky130_fd_sc_hd__a22oi_2   A =  12.51  Df =4228.7  -47.8 ps  S = 156.7 ps  Cin =  4.3 ff  Cout =   6.1 ff  Cmax = 170.3 ff  G =  137  
+ABC: Path 16 --    1194 : 5    2 sky130_fd_sc_hd__o2111ai_2 A =  15.01  Df =4450.7  -87.7 ps  S = 154.2 ps  Cin =  4.3 ff  Cout =   4.0 ff  Cmax = 129.1 ff  G =   86  
+ABC: Path 17 --    1211 : 4    1 sky130_fd_sc_hd__or4_2     A =   8.76  Df =5022.4 -430.5 ps  S =  95.7 ps  Cin =  1.5 ff  Cout =   2.6 ff  Cmax = 310.4 ff  G =  160  
+ABC: Path 18 --    1216 : 3    4 sky130_fd_sc_hd__o21a_2    A =   8.76  Df =5264.9 -350.9 ps  S =  94.0 ps  Cin =  2.4 ff  Cout =  15.5 ff  Cmax = 294.8 ff  G =  612  
+ABC: Path 19 --    1218 : 3   30 sky130_fd_sc_hd__o21ai_2   A =   8.76  Df =6042.8 -846.3 ps  S =1012.8 ps  Cin =  4.5 ff  Cout =  93.4 ff  Cmax = 139.2 ff  G = 1957  
+ABC: Path 20 --    1301 : 3    1 sky130_fd_sc_hd__mux2_1    A =  11.26  Df =6512.3 -917.6 ps  S =  51.8 ps  Cin =  2.3 ff  Cout =   2.0 ff  Cmax = 173.0 ff  G =   82  
+ABC: Path 21 --    1302 : 3    3 sky130_fd_sc_hd__mux2_1    A =  11.26  Df =6713.5 -760.3 ps  S = 148.7 ps  Cin =  2.3 ff  Cout =  15.5 ff  Cmax = 173.0 ff  G =  656  
+ABC: Path 22 --    1303 : 2    3 sky130_fd_sc_hd__xnor2_2   A =  16.27  Df =6912.1 -720.3 ps  S = 244.6 ps  Cin =  8.5 ff  Cout =  15.3 ff  Cmax = 121.8 ff  G =  171  
+ABC: Path 23 --    1315 : 2    1 sky130_fd_sc_hd__or2_2     A =   6.26  Df =7191.2 -478.8 ps  S =  52.7 ps  Cin =  1.5 ff  Cout =   2.6 ff  Cmax = 299.4 ff  G =  169  
+ABC: Path 24 --    1317 : 5    3 sky130_fd_sc_hd__a2111o_2  A =  12.51  Df =7615.6 -739.6 ps  S =  82.3 ps  Cin =  2.4 ff  Cout =   9.5 ff  Cmax = 324.1 ff  G =  378  
+ABC: Path 25 --    1371 : 4    2 sky130_fd_sc_hd__a211o_2   A =  10.01  Df =7919.3 -859.6 ps  S =  50.7 ps  Cin =  2.4 ff  Cout =   3.9 ff  Cmax = 325.0 ff  G =  161  
+ABC: Path 26 --    1397 : 4    2 sky130_fd_sc_hd__a211o_2   A =  10.01  Df =8211.3 -999.7 ps  S =  51.1 ps  Cin =  2.4 ff  Cout =   4.0 ff  Cmax = 325.0 ff  G =  163  
+ABC: Path 27 --    1400 : 4    2 sky130_fd_sc_hd__a31o_2    A =   8.76  Df =8450.2-1084.6 ps  S =  58.2 ps  Cin =  2.4 ff  Cout =   6.6 ff  Cmax = 271.9 ff  G =  269  
+ABC: Path 28 --    1409 : 3    1 sky130_fd_sc_hd__and3_2    A =   7.51  Df =8634.9-1107.4 ps  S =  41.9 ps  Cin =  1.5 ff  Cout =   2.5 ff  Cmax = 309.5 ff  G =  158  
+ABC: Path 29 --    1411 : 4    1 sky130_fd_sc_hd__o31a_2    A =  10.01  Df =9043.4 -235.8 ps  S = 190.4 ps  Cin =  2.3 ff  Cout =  33.4 ff  Cmax = 285.7 ff  G = 1425  
+ABC: Start-point = pi135 (\delta_0 [1]).  End-point = po44 ($auto$rtlil.cc:2739:MuxGate$10449).
+ABC: netlist                       : i/o =  460/  117  lat =    0  nd =  2040  edge =   5468  area =18530.00  delay =29.00  lev = 29
+ABC: + write_blif /tmp/yosys-abc-St7qI3/output.blif 
+
+147.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__o2111a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4bb_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o32a_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nand4b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__a41o_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:       22
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__and4b_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:       23
+ABC RESULTS:   sky130_fd_sc_hd__o41a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o311a_2 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:       51
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:       46
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:       73
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:       69
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:       18
+ABC RESULTS:   sky130_fd_sc_hd__a2111oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:       43
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:       23
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:      125
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:       44
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:      185
+ABC RESULTS:   sky130_fd_sc_hd__a311o_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:      259
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:       25
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:       80
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:       48
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:      144
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:       62
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2o_2 cells:       15
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:      150
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:       38
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:       52
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:      144
+ABC RESULTS:   sky130_fd_sc_hd__buf_1 cells:        6
+ABC RESULTS:        internal signals:     2734
+ABC RESULTS:           input signals:      460
+ABC RESULTS:          output signals:      117
+Removing temp directory.
+
+148. Executing SETUNDEF pass (replace undef values with defined constants).
+
+149. Executing HILOMAP pass (mapping to constant drivers).
+
+150. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+151. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \viterbi_top..
+Removed 0 unused cells and 3359 unused wires.
+<suppressed ~1 debug messages>
+
+152. Executing INSBUF pass (insert buffer cells for connected wires).
+
+153. Executing CHECK pass (checking for obvious problems).
+Checking module viterbi_top...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/sidsh/Documents/ECE510/hardware_for_AI/proj/openlane/Satya/openlane_v1/runs/RUN_2025-06-12_23-50-22/tmp/979a8bb228eb4079a991b3d7fd9b17fb.lib ",
+   "modules": {
+      "\\viterbi_top": {
+         "num_wires":         2176,
+         "num_wire_bits":     2502,
+         "num_pub_wires":     136,
+         "num_pub_wire_bits": 462,
+         "num_ports":         36,
+         "num_port_bits":     362,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2157,
+         "area":              21600.716800,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 4,
+            "sky130_fd_sc_hd__a2111oi_2": 2,
+            "sky130_fd_sc_hd__a211o_2": 43,
+            "sky130_fd_sc_hd__a211oi_2": 9,
+            "sky130_fd_sc_hd__a21bo_2": 23,
+            "sky130_fd_sc_hd__a21boi_2": 9,
+            "sky130_fd_sc_hd__a21o_2": 80,
+            "sky130_fd_sc_hd__a21oi_2": 62,
+            "sky130_fd_sc_hd__a221o_2": 25,
+            "sky130_fd_sc_hd__a221oi_2": 3,
+            "sky130_fd_sc_hd__a22o_2": 22,
+            "sky130_fd_sc_hd__a22oi_2": 5,
+            "sky130_fd_sc_hd__a2bb2o_2": 15,
+            "sky130_fd_sc_hd__a311o_2": 7,
+            "sky130_fd_sc_hd__a31o_2": 52,
+            "sky130_fd_sc_hd__a31oi_2": 6,
+            "sky130_fd_sc_hd__a32o_2": 8,
+            "sky130_fd_sc_hd__a32oi_2": 1,
+            "sky130_fd_sc_hd__a41o_2": 3,
+            "sky130_fd_sc_hd__and2_2": 73,
+            "sky130_fd_sc_hd__and2b_2": 34,
+            "sky130_fd_sc_hd__and3_2": 34,
+            "sky130_fd_sc_hd__and3b_2": 38,
+            "sky130_fd_sc_hd__and4_2": 9,
+            "sky130_fd_sc_hd__and4b_2": 7,
+            "sky130_fd_sc_hd__and4bb_2": 4,
+            "sky130_fd_sc_hd__buf_1": 6,
+            "sky130_fd_sc_hd__dfrtp_2": 116,
+            "sky130_fd_sc_hd__dfstp_2": 1,
+            "sky130_fd_sc_hd__inv_2": 125,
+            "sky130_fd_sc_hd__mux2_1": 144,
+            "sky130_fd_sc_hd__nand2_2": 259,
+            "sky130_fd_sc_hd__nand2b_2": 23,
+            "sky130_fd_sc_hd__nand3_2": 20,
+            "sky130_fd_sc_hd__nand3b_2": 7,
+            "sky130_fd_sc_hd__nand4_2": 1,
+            "sky130_fd_sc_hd__nand4b_2": 2,
+            "sky130_fd_sc_hd__nor2_2": 150,
+            "sky130_fd_sc_hd__nor3_2": 1,
+            "sky130_fd_sc_hd__nor4_2": 4,
+            "sky130_fd_sc_hd__nor4b_2": 1,
+            "sky130_fd_sc_hd__o2111a_2": 1,
+            "sky130_fd_sc_hd__o2111ai_2": 1,
+            "sky130_fd_sc_hd__o211a_2": 18,
+            "sky130_fd_sc_hd__o211ai_2": 3,
+            "sky130_fd_sc_hd__o21a_2": 46,
+            "sky130_fd_sc_hd__o21ai_2": 51,
+            "sky130_fd_sc_hd__o21ba_2": 7,
+            "sky130_fd_sc_hd__o21bai_2": 1,
+            "sky130_fd_sc_hd__o221a_2": 44,
+            "sky130_fd_sc_hd__o221ai_2": 3,
+            "sky130_fd_sc_hd__o22a_2": 48,
+            "sky130_fd_sc_hd__o22ai_2": 6,
+            "sky130_fd_sc_hd__o2bb2a_2": 8,
+            "sky130_fd_sc_hd__o2bb2ai_2": 1,
+            "sky130_fd_sc_hd__o311a_2": 11,
+            "sky130_fd_sc_hd__o311ai_2": 2,
+            "sky130_fd_sc_hd__o31a_2": 20,
+            "sky130_fd_sc_hd__o31ai_2": 7,
+            "sky130_fd_sc_hd__o32a_2": 5,
+            "sky130_fd_sc_hd__o41a_2": 1,
+            "sky130_fd_sc_hd__or2_2": 185,
+            "sky130_fd_sc_hd__or3_2": 12,
+            "sky130_fd_sc_hd__or3b_2": 11,
+            "sky130_fd_sc_hd__or4_2": 9,
+            "sky130_fd_sc_hd__or4b_2": 4,
+            "sky130_fd_sc_hd__or4bb_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 144,
+            "sky130_fd_sc_hd__xor2_2": 69
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2176,
+         "num_wire_bits":     2502,
+         "num_pub_wires":     136,
+         "num_pub_wire_bits": 462,
+         "num_ports":         36,
+         "num_port_bits":     362,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2157,
+         "area":              21600.716800,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 4,
+            "sky130_fd_sc_hd__a2111oi_2": 2,
+            "sky130_fd_sc_hd__a211o_2": 43,
+            "sky130_fd_sc_hd__a211oi_2": 9,
+            "sky130_fd_sc_hd__a21bo_2": 23,
+            "sky130_fd_sc_hd__a21boi_2": 9,
+            "sky130_fd_sc_hd__a21o_2": 80,
+            "sky130_fd_sc_hd__a21oi_2": 62,
+            "sky130_fd_sc_hd__a221o_2": 25,
+            "sky130_fd_sc_hd__a221oi_2": 3,
+            "sky130_fd_sc_hd__a22o_2": 22,
+            "sky130_fd_sc_hd__a22oi_2": 5,
+            "sky130_fd_sc_hd__a2bb2o_2": 15,
+            "sky130_fd_sc_hd__a311o_2": 7,
+            "sky130_fd_sc_hd__a31o_2": 52,
+            "sky130_fd_sc_hd__a31oi_2": 6,
+            "sky130_fd_sc_hd__a32o_2": 8,
+            "sky130_fd_sc_hd__a32oi_2": 1,
+            "sky130_fd_sc_hd__a41o_2": 3,
+            "sky130_fd_sc_hd__and2_2": 73,
+            "sky130_fd_sc_hd__and2b_2": 34,
+            "sky130_fd_sc_hd__and3_2": 34,
+            "sky130_fd_sc_hd__and3b_2": 38,
+            "sky130_fd_sc_hd__and4_2": 9,
+            "sky130_fd_sc_hd__and4b_2": 7,
+            "sky130_fd_sc_hd__and4bb_2": 4,
+            "sky130_fd_sc_hd__buf_1": 6,
+            "sky130_fd_sc_hd__dfrtp_2": 116,
+            "sky130_fd_sc_hd__dfstp_2": 1,
+            "sky130_fd_sc_hd__inv_2": 125,
+            "sky130_fd_sc_hd__mux2_1": 144,
+            "sky130_fd_sc_hd__nand2_2": 259,
+            "sky130_fd_sc_hd__nand2b_2": 23,
+            "sky130_fd_sc_hd__nand3_2": 20,
+            "sky130_fd_sc_hd__nand3b_2": 7,
+            "sky130_fd_sc_hd__nand4_2": 1,
+            "sky130_fd_sc_hd__nand4b_2": 2,
+            "sky130_fd_sc_hd__nor2_2": 150,
+            "sky130_fd_sc_hd__nor3_2": 1,
+            "sky130_fd_sc_hd__nor4_2": 4,
+            "sky130_fd_sc_hd__nor4b_2": 1,
+            "sky130_fd_sc_hd__o2111a_2": 1,
+            "sky130_fd_sc_hd__o2111ai_2": 1,
+            "sky130_fd_sc_hd__o211a_2": 18,
+            "sky130_fd_sc_hd__o211ai_2": 3,
+            "sky130_fd_sc_hd__o21a_2": 46,
+            "sky130_fd_sc_hd__o21ai_2": 51,
+            "sky130_fd_sc_hd__o21ba_2": 7,
+            "sky130_fd_sc_hd__o21bai_2": 1,
+            "sky130_fd_sc_hd__o221a_2": 44,
+            "sky130_fd_sc_hd__o221ai_2": 3,
+            "sky130_fd_sc_hd__o22a_2": 48,
+            "sky130_fd_sc_hd__o22ai_2": 6,
+            "sky130_fd_sc_hd__o2bb2a_2": 8,
+            "sky130_fd_sc_hd__o2bb2ai_2": 1,
+            "sky130_fd_sc_hd__o311a_2": 11,
+            "sky130_fd_sc_hd__o311ai_2": 2,
+            "sky130_fd_sc_hd__o31a_2": 20,
+            "sky130_fd_sc_hd__o31ai_2": 7,
+            "sky130_fd_sc_hd__o32a_2": 5,
+            "sky130_fd_sc_hd__o41a_2": 1,
+            "sky130_fd_sc_hd__or2_2": 185,
+            "sky130_fd_sc_hd__or3_2": 12,
+            "sky130_fd_sc_hd__or3b_2": 11,
+            "sky130_fd_sc_hd__or4_2": 9,
+            "sky130_fd_sc_hd__or4b_2": 4,
+            "sky130_fd_sc_hd__or4bb_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 144,
+            "sky130_fd_sc_hd__xor2_2": 69
+         }
+      }
+}
+
+154. Printing statistics.
+
+=== viterbi_top ===
+
+   Number of wires:               2176
+   Number of wire bits:           2502
+   Number of public wires:         136
+   Number of public wire bits:     462
+   Number of ports:                 36
+   Number of port bits:            362
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2157
+     sky130_fd_sc_hd__a2111o_2       4
+     sky130_fd_sc_hd__a2111oi_2      2
+     sky130_fd_sc_hd__a211o_2       43
+     sky130_fd_sc_hd__a211oi_2       9
+     sky130_fd_sc_hd__a21bo_2       23
+     sky130_fd_sc_hd__a21boi_2       9
+     sky130_fd_sc_hd__a21o_2        80
+     sky130_fd_sc_hd__a21oi_2       62
+     sky130_fd_sc_hd__a221o_2       25
+     sky130_fd_sc_hd__a221oi_2       3
+     sky130_fd_sc_hd__a22o_2        22
+     sky130_fd_sc_hd__a22oi_2        5
+     sky130_fd_sc_hd__a2bb2o_2      15
+     sky130_fd_sc_hd__a311o_2        7
+     sky130_fd_sc_hd__a31o_2        52
+     sky130_fd_sc_hd__a31oi_2        6
+     sky130_fd_sc_hd__a32o_2         8
+     sky130_fd_sc_hd__a32oi_2        1
+     sky130_fd_sc_hd__a41o_2         3
+     sky130_fd_sc_hd__and2_2        73
+     sky130_fd_sc_hd__and2b_2       34
+     sky130_fd_sc_hd__and3_2        34
+     sky130_fd_sc_hd__and3b_2       38
+     sky130_fd_sc_hd__and4_2         9
+     sky130_fd_sc_hd__and4b_2        7
+     sky130_fd_sc_hd__and4bb_2       4
+     sky130_fd_sc_hd__buf_1          6
+     sky130_fd_sc_hd__dfrtp_2      116
+     sky130_fd_sc_hd__dfstp_2        1
+     sky130_fd_sc_hd__inv_2        125
+     sky130_fd_sc_hd__mux2_1       144
+     sky130_fd_sc_hd__nand2_2      259
+     sky130_fd_sc_hd__nand2b_2      23
+     sky130_fd_sc_hd__nand3_2       20
+     sky130_fd_sc_hd__nand3b_2       7
+     sky130_fd_sc_hd__nand4_2        1
+     sky130_fd_sc_hd__nand4b_2       2
+     sky130_fd_sc_hd__nor2_2       150
+     sky130_fd_sc_hd__nor3_2         1
+     sky130_fd_sc_hd__nor4_2         4
+     sky130_fd_sc_hd__nor4b_2        1
+     sky130_fd_sc_hd__o2111a_2       1
+     sky130_fd_sc_hd__o2111ai_2      1
+     sky130_fd_sc_hd__o211a_2       18
+     sky130_fd_sc_hd__o211ai_2       3
+     sky130_fd_sc_hd__o21a_2        46
+     sky130_fd_sc_hd__o21ai_2       51
+     sky130_fd_sc_hd__o21ba_2        7
+     sky130_fd_sc_hd__o21bai_2       1
+     sky130_fd_sc_hd__o221a_2       44
+     sky130_fd_sc_hd__o221ai_2       3
+     sky130_fd_sc_hd__o22a_2        48
+     sky130_fd_sc_hd__o22ai_2        6
+     sky130_fd_sc_hd__o2bb2a_2       8
+     sky130_fd_sc_hd__o2bb2ai_2      1
+     sky130_fd_sc_hd__o311a_2       11
+     sky130_fd_sc_hd__o311ai_2       2
+     sky130_fd_sc_hd__o31a_2        20
+     sky130_fd_sc_hd__o31ai_2        7
+     sky130_fd_sc_hd__o32a_2         5
+     sky130_fd_sc_hd__o41a_2         1
+     sky130_fd_sc_hd__or2_2        185
+     sky130_fd_sc_hd__or3_2         12
+     sky130_fd_sc_hd__or3b_2        11
+     sky130_fd_sc_hd__or4_2          9
+     sky130_fd_sc_hd__or4b_2         4
+     sky130_fd_sc_hd__or4bb_2        1
+     sky130_fd_sc_hd__xnor2_2      144
+     sky130_fd_sc_hd__xor2_2        69
+
+   Chip area for module '\viterbi_top': 21600.716800
+     of which used for sequential elements: 3074.198400 (14.23%)
+
+155. Executing Verilog backend.
+Dumping module `\viterbi_top'.
+
+156. Executing JSON backend.
